@@ -13,9 +13,11 @@ $container['view'] = function ($container) {
     return new \Slim\Views\PhpRenderer('../templates');
 };
 
+$container['configdb'] = require '../config/ConfigDb.php';
+
 $container['db'] = function ($container) {
 
-    return new \Novokhatsky\Db\DbConnect(new \Fuel\ConfigDb);
+    return new \Novokhatsky\DbConnect($container['configdb']);
 };
 
 $app->run();
