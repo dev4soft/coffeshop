@@ -4,13 +4,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 
-$app = new \Slim\App;
+$configuration = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
 
-//$app->config(
-//    [
-//        'DisplayErrorDetails' => true,
-//    ]
-//);
+$c = new \Slim\Container($configuration);
+
+$app = new \Slim\App($c);
 
 $container = $app->getContainer();
 
@@ -27,9 +29,10 @@ $container['db'] = function ($container) {
 };
 
 
-class MyTest
+class MyModel
 {
     private $db;
+
 
     public function __construct($db)
     {
@@ -37,10 +40,30 @@ class MyTest
     }
 
 
+    public function dt()
+    {
+        return $this->db->getValue('select now()');
+    }
+}
+
+
+class MyController
+{
+    private $view;
+    private $mymodel;
+
+
+    public function __construct($view, $mymodel)
+    {
+        $this->view = $view;
+        $this->mymodel = $mymodel;
+    }
+
+
     public function index($request, $response)
     {
 
-        $date = $this->db->getValue('select now()');
+        $date = $this->mymodel->dt();
 
         $response->getBody()->write("Hello world!" . " now is ${date}");
         return $response;
@@ -48,11 +71,12 @@ class MyTest
 };
 
 
-$container['MyTest'] = function($container) {
+$container['MyController'] = function($container) {
 
-    return new MyTest($container['db']);
+    return new MyController($container['view'], new MyModel($container['db']));
 };
-$app->get('/', 'MyTest:index');
+
+$app->get('/', 'MyController:index');
 
 $app->run();
 
