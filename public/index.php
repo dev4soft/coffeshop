@@ -66,7 +66,37 @@ class MyController
         $date = $this->mymodel->dt();
 
         $response->getBody()->write("Hello world!" . " now is ${date}");
+        
         return $response;
+    }
+
+
+    public function about($request, $response)
+    {
+        $response->getBody()->write("About of us");
+
+        return $response;
+    }
+};
+
+
+class MyMiddle
+{
+    public function __invoke($request, $response, $next)
+    {
+        error_log("middleware");
+
+
+        return $next($request, $response);
+    }
+
+
+    public function ware($request, $response, $next)
+    {
+        error_log("ware !!!  middleware");
+
+
+        return $next($request, $response);
     }
 };
 
@@ -76,7 +106,16 @@ $container['MyController'] = function($container) {
     return new MyController($container['view'], new MyModel($container['db']));
 };
 
+$container['MyMiddle'] = function($container) {
+
+    return new MyMiddle();
+};
+
 $app->get('/', 'MyController:index');
+
+$app->group('', function () {
+    $this->get('/about', 'MyController:about');
+})->add('MyMiddle:ware');
 
 $app->run();
 
