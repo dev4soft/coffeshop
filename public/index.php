@@ -29,59 +29,6 @@ $container['db'] = function ($container) {
 };
 
 
-class MyModel
-{
-    private $db;
-
-
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
-
-
-    public function dt()
-    {
-        return $this->db->getValue('select now()');
-    }
-}
-
-
-class MyController
-{
-    private $view;
-    private $mymodel;
-
-
-    public function __construct($view, $mymodel)
-    {
-        $this->view = $view;
-        $this->mymodel = $mymodel;
-    }
-
-
-    public function index($request, $response)
-    {
-
-        $date = $this->mymodel->dt();
-
-        //$response->getBody()->write("Hello world!" . " now is ${date}");
-        
-        //return $response;
-
-        return $this->view->render($response, 'index.php');
-    }
-
-
-    public function about($request, $response)
-    {
-        $response->getBody()->write("About of us");
-
-        return $response;
-    }
-};
-
-
 class MyMiddle
 {
     public function __invoke($request, $response, $next)
@@ -114,9 +61,10 @@ $container['Menu'] = function($container) {
              new \CoffeShop\Models\Product($container['db']));
 };
 
-$container['MyController'] = function($container) {
+$container['Registration'] = function($container) {
 
-    return new MyController($container['view'], new MyModel($container['db']));
+    return new \CoffeShop\Controllers\Registration($container['view'],
+             new \CoffeShop\Models\User($container['db']));
 };
 
 $container['MyMiddle'] = function($container) {
@@ -127,9 +75,10 @@ $container['MyMiddle'] = function($container) {
 $app->get('/', 'MainForm:index');
 $app->get('/contacts', 'MainForm:contacts');
 $app->get('/product', 'Menu:product');
+$app->get('/registration', 'Registration:form');
 
 $app->group('', function () {
-    $this->get('/about', 'MyController:about');
+    $this->get('/about', 'MainForm:about');
 })->add('MyMiddle:ware');
 
 $app->run();
