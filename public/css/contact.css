@@ -1,0 +1,10 @@
+.bg-hours{
+    background-image: url(/resource/images/mainFon/contact-bg.png);
+    width: 400px;
+    height: 500px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}

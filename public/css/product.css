@@ -1,0 +1,136 @@
+.product{
+    position: relative;
+    display: inline-block;
+    
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
+    box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
+}
+
+.product-content{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color:white;
+    opacity: .9;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    
+    z-index: 1;
+    
+}
+
+  
+.product:hover .product-content {   
+    
+display: block;
+}
+
+
+.product-button{
+    
+    background: rgb(53, 53, 53);
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.product-button:hover{
+    background: rgb(15, 151, 15);
+    
+}
+
+.product-button p{  
+    font-weight: bold;
+    
+}
+
+.product-border{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.product-button-ml{
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.829);
+}
+
+.product-button-rub{
+    font-weight: 300;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+
+ul.ks-cboxtags {
+    list-style: none;
+    
+}
+ul.ks-cboxtags li{
+    display: inline;
+}
+ul.ks-cboxtags li label{
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    background-color: #353535;
+    color: rgba(255, 255, 255, 0.829);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    
+}
+
+
+ul.ks-cboxtags li label {   
+    text-align: center;
+    padding: 5px; 
+    cursor: pointer;
+}
+ul.ks-cboxtags li label p{
+    font-size: 16px;   
+    color: white;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    background-color: rgb(15, 151, 15);
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.menu_a{
+    margin: 15px;
+}
+.menu_a:hover{
+    text-decoration:underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+}
+
+
+
+select {
+    border-radius: 50px;
+    height: 50px;
+    width: 250px;
+    font-size: 16px;
+    padding: 2px 5px;
+}
+
+
+
+
+
+  
+  

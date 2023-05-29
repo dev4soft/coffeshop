@@ -1,0 +1,77 @@
+<header class="z-[2] w-[100%] bg-white border-b">
+  <div
+    class="container h-[100px] flex text-center pr-[40px] md:h-[80px] sm:h-[60px]"
+  >
+    <nav class="flex items-center w-full">
+      <a class="w-[300px] md:w-[200px] flex items-center pl-[20px]" href="">
+        <div
+          class="text-[40px] md:text-[30px]"
+          style="font-family: 'Amatic SC'"
+        >
+          время для кофе
+        </div>
+      </a>
+      <div class="grow">
+        <ul class="flex justify-start gap-12 md:hidden">
+          <li>
+            <a
+              href="/"
+              class="font-medium text-[18px] text-gray-600 hover:text-orange-200 lg:text-sm"
+              >Главная</a
+            >
+          </li>
+          <li>
+            <a
+              href="/product"
+              class="font-medium text-[18px] text-gray-600 hover:text-orange-200 lg:text-sm"
+              >Магазин</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="font-medium text-[18px] text-gray-600 hover:text-orange-200 lg:text-sm"
+              >О нас</a
+            >
+          </li>
+          <li>
+            <a
+              href="/contacts"
+              class="font-medium text-[18px] text-gray-600 hover:text-orange-200 lg:text-sm"
+              >Контакты</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Burger Button -->
+      <div class="hidden justify-center md:block">
+        <input id="menu__toggle" type="checkbox" class="hidden" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+        <ul class="menu__box">
+          <li><a class="menu__item" href="#">Главная</a></li>
+          <li><a class="menu__item" href="#">Магазин</a></li>
+          <li><a class="menu__item" href="#">О нас</a></li>
+          <li><a class="menu__item" href="/contacts">Контакты</a></li>
+        </ul>
+      </div>
+      <ul class="flex order-last md:mr-[15px]">
+        <li><img class="h-[27px]" src="resource/images/cart.png" alt="" /></li>
+        <li><div class="pt-[5px] text-gray-600 text-[16px]">321321</div></li>
+        <button class="dropdown" href="">
+          <img
+            class="h-[25px] pt-[5px] pl-[5px]"
+            src="resource/images/cogwheel.png"
+            alt=""
+          />
+          <div class="dropdown-content">
+            <a href="login.php">Авторизация</a>
+            <a href="registration.php">Регистрация</a>
+            <a href="#">Мой аккаунт</a>
+          </div>
+        </button>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -65,9 +65,11 @@ class MyController
 
         $date = $this->mymodel->dt();
 
-        $response->getBody()->write("Hello world!" . " now is ${date}");
+        //$response->getBody()->write("Hello world!" . " now is ${date}");
         
-        return $response;
+        //return $response;
+
+        return $this->view->render($response, 'index.php');
     }
 
 
@@ -100,6 +102,17 @@ class MyMiddle
     }
 };
 
+$container['MainForm'] = function($container) {
+
+    return new \CoffeShop\Controllers\MainForm($container['view'],
+             new \CoffeShop\Models\Product($container['db']));
+};
+
+$container['Menu'] = function($container) {
+
+    return new \CoffeShop\Controllers\Menu($container['view'],
+             new \CoffeShop\Models\Product($container['db']));
+};
 
 $container['MyController'] = function($container) {
 
@@ -111,7 +124,9 @@ $container['MyMiddle'] = function($container) {
     return new MyMiddle();
 };
 
-$app->get('/', 'MyController:index');
+$app->get('/', 'MainForm:index');
+$app->get('/contacts', 'MainForm:contacts');
+$app->get('/product', 'Menu:product');
 
 $app->group('', function () {
     $this->get('/about', 'MyController:about');
