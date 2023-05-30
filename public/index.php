@@ -76,6 +76,7 @@ $app->get('/', 'MainForm:index');
 $app->get('/contacts', 'MainForm:contacts');
 $app->get('/product', 'Menu:product');
 $app->get('/registration', 'Registration:form');
+$app->post('/registration', 'Registration:save');
 
 $app->group('', function () {
     $this->get('/about', 'MainForm:about');

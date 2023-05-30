@@ -13,9 +13,23 @@ class User
     }
 
 
-    public function dt()
+    public function add($first_name, $last_name, $email, $pass)
     {
-        return $this->db->getValue('select now()');
+        $result = $this->db->insertData(
+            'insert into users (first_name, last_name, email, pass)
+            values (:first_name, :last_name, :email, :pass)',
+            [
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'email' => $email,
+                'pass' => $pass,
+            ]
+        );
+
+        return [
+            'result'  => $result,
+            'errcode' => $this->db->errInfo[1],
+        ];
     }
 }
 
