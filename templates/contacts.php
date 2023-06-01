@@ -26,14 +26,17 @@
     <title>Document</title>
   </head>
   <body>
-  <?php
-        require_once "header.html";
-      ?> 
+  <?php require_once "header.html";?> 
     <section class="py-[50px]">
       <div class="container mx-auto ">
         <div class=" flex flex-wrap columns-2xs justify-center gap-10 min-w-[400px]">
-          <div class=" basis-1/2    shrink-0 min-w-[400px]">
-            <form action="" class="w-full border h-full">
+          <div class=" basis-1/2 relative   shrink-0 min-w-[400px]">
+          <div
+                class="text-[100px] text-[#C0C0C0] absolute left-10 top-[-72px] lg:text-[60px] z-0"
+              >
+                Контакты
+              </div>
+            <form action="" class="w-full border h-full z-10">
               <div class=" w-full flex flex-wrap p-[50px] gap-5 lg:flex-col md:p-[25px]">
                 <div class="w-full  min-w-[300px] relative ">
                   <input type="text" name="name" class="peer block w-full appearance-none border-1 border-b border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " />
@@ -65,6 +68,7 @@
                       <span>Пятница: 09:00 - 22:00</span>
                       <span>Суббота: 09:00 - 19:00</span>
                       <span>Воскресенье: Выходной</span>
+                      <span class="mt-[70px] text-base  ">Адрес: Комсомольский просп., 13Б,</span>
                   </div>
                 </div>
               </div>
@@ -80,9 +84,7 @@
         <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qL1uKI6baeB2zfVbf_AexNwh49y4cpE&ehbc=2E312F" width="100%" height="700" defer></iframe>
       </div>
     </section>
-    <?php
-        require_once "footer.html";
-      ?>
+    <?php require_once "footer.html";?>
     
     <script src="/js/main.js"></script>
 </html>
