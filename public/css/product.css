@@ -1,28 +1,39 @@
+hr{
+    border: 2px solid #2f2f2f;
+    border-radius: 50px;
+}
+
 .product{
     position: relative;
     display: inline-block;
-    
+    background: white;
     border-radius: 20px;
     -webkit-box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
     -moz-box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
     box-shadow: 0px 0px 5px 4px rgba(174, 169, 178, 0.55);
 }
 
+.product:hover{
+    color: #0f970f;
+    z-index: 3;
+}
+
+
+
 .product-content{
     display: none;
     position: absolute;
     top: 0;
     right: 0;
+    background: white;
     background-color:white;
     opacity: .9;
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 20px;
-    
-    z-index: 1;
+    z-index: 3;
     
 }
-
   
 .product:hover .product-content {   
     
@@ -32,14 +43,14 @@ display: block;
 
 .product-button{
     
-    background: rgb(53, 53, 53);
-    width: 100px;
-    height: 50px;
-    border-radius: 50px;
+    background: #353535;
+    width: 100%;
+    height: 40px;
+    
 }
 
 .product-button:hover{
-    background: rgb(15, 151, 15);
+    background: #0f970f;
     
 }
 
@@ -54,13 +65,13 @@ display: block;
 }
 
 .product-button-ml{
-    font-size: 10px;
+    font-size: 8px;
     color: rgba(255, 255, 255, 0.829);
 }
 
 .product-button-rub{
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(255, 255, 255);
 }
 
@@ -73,13 +84,13 @@ ul.ks-cboxtags li{
     display: inline;
 }
 ul.ks-cboxtags li label{
-    width: 100px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     display: inline-block;
     background-color: #353535;
     color: rgba(255, 255, 255, 0.829);
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 8px;
     font-weight: bold;
     
 }
@@ -91,7 +102,7 @@ ul.ks-cboxtags li label {
     cursor: pointer;
 }
 ul.ks-cboxtags li label p{
-    font-size: 16px;   
+    font-size: 14px;   
     color: white;
 }
 
@@ -123,9 +134,10 @@ ul.ks-cboxtags li input[type="checkbox"] {
 select {
     border-radius: 50px;
     height: 50px;
-    width: 250px;
-    font-size: 16px;
+    width: 210px;
+    font-size: 14px;
     padding: 2px 5px;
+    background: white;
 }
 
 

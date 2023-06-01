@@ -6,12 +6,12 @@
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    height: 500px;
+    width: auto;
+    height: auto;
   }
 
  
