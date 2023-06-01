@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="stylesheet" href="/css/main.css" >
     <link rel="stylesheet" href="/css/styleSwiper.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
@@ -155,10 +157,13 @@
         <section id="service" class=" h-auto py-[100px]" >
             
             <div class="container h-full">
-                <div class=" w-full">
-                    <div class="flex justify-center items-center w-full h-[50px] text-3xl">
-                        Наш сервис
-                    </div>
+                <div class=" w-full relative">
+                <div
+                class="text-[100px] text-[#C0C0C0] absolute left-10 top-[-72px] lg:text-[60px] z-0"
+              >
+                Наш сервис
+              </div>
+                    
                     <div class="flex flex-wrap p-[50px]  justify-center">
 
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
@@ -343,43 +348,38 @@
             c14.494,0,28.988-0.069,43.481-0.015c3.862,0.015,5.46-0.053,5.55-0.188c283.215,0,565.436,0,847.625,0c0-6.655,0-13.224,0-19.867
             C1915.898,10.076,1910.912,9.958,1906.688,12.029z"></path></svg>
 
-      <section class="bg-black" style="background: rgba(26, 26, 26, 0.904);">
-        <div class="h-full w-full ">
-            <div class="container "> 
-              <div class="flex items-center text-center h-[800px] w-full " >
-                <div class="swiper mySwiper z-0 px-10" >
-                  <div class="swiper-wrapper flex items-center " >
-                    <div class="swiper-slide" >
-                      <div class="p-[20px]">
-                        <div class="flex flex-col">
-                          <div class="w-[300px] h-[300px] " ><img src="resource/images/slides/coffe2.png"   alt=""></div>
-                          <div class="w-full">
-                            <p class="mb-1">Latte</p>
-                          </div>
-                          <div class="flex gap-1 justify-center">
-                            <button class="w-[40px] h-[40px] bg-slate-300 text-xs">0,4 л</button>
-                            <button class="w-[40px] h-[40px] bg-slate-300 text-xs">0,3 л</button>
-                            <button class="w-[40px] h-[40px] bg-slate-300 text-xs">0,2 л</button>
-                          </div>
-                          <div class="w-full flex gap-2 justify-center mt-3">
-                            <button>В корзину</button>
-                            <p>200 Р</p>
-                          </div>
-                        </div>
+      <section class="" style="background: rgba(26, 26, 26, 0.904);">
+        <div class="h-auto w-full py-[100px]">
+          
+          <div class="container mx-auto ">
+          <div class="flex text-center justify-center mb-[50px] text-white text-3xl">Где нас найти?</div>
+            <div class=" flex flex-wrap columns-2xs justify-center gap-10 ">
+              <div class=" basis-1/2    shrink-0 min-w-[400px]">
+                <div class="map" id="map"  onClick="style.pointerEvents='none'">
+                  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1qL1uKI6baeB2zfVbf_AexNwh49y4cpE&ehbc=2E312F" width="100%" height="550" defer></iframe>
+                </div>
+              </div>
+              <div class="basis-1/3 flex items-center">
+                <div class="bg-hours">
+                  <div class="p-[20px] w-full h-full">
+                    <div class="p-[20px] border-[7px] border-white w-full h-full">
+                      <div class="flex flex-col shrink-0 text-lg relative top-[10%] left-0 text-white">
+                          <span class="text-center my-5 text-2xl">Время работы</span>
+                          <span>Понедельник: 09:00 - 20:00</span>
+                          <span>Вторник: 09:00 - 20:00</span>
+                          <span>Среда: 09:00 - 20:00</span>
+                          <span>Четверг: 09:00 - 20:00</span>
+                          <span>Пятница: 09:00 - 22:00</span>
+                          <span>Суббота: 09:00 - 19:00</span>
+                          <span>Воскресенье: Выходной</span>
+                          <span class="mt-[70px] text-base  ">Адрес: Комсомольский просп., 13Б,</span>
                       </div>
                     </div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                    <div class="swiper-slide">Slide 6</div>
-                    <div class="swiper-slide">Slide 7</div>
-                    <div class="swiper-slide">Slide 8</div>
-                    <div class="swiper-slide">Slide 9</div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div>             
+          </div> 
         </div>
       </section>   
       <?php
