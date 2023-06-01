@@ -2,7 +2,7 @@
 
 namespace CoffeShop\Controllers;
 
-class Menu
+class Basket
 {
     private $view;
     private $product;
@@ -15,9 +15,9 @@ class Menu
     }
 
 
-    public function product($request, $response)
+    public function cart($request, $response)
     {
-        return $this->view->render($response, 'product.php');
+        return $this->view->render($response, 'cart.php');
     }
 };
 
