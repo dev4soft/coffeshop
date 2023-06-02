@@ -73,6 +73,12 @@ $container['Registration'] = function($container) {
              new \CoffeShop\Models\User($container['db']));
 };
 
+$container['Auth'] = function($container) {
+
+    return new \CoffeShop\Controllers\Auth($container['view'],
+             new \CoffeShop\Models\User($container['db']));
+};
+
 $container['MyMiddle'] = function($container) {
 
     return new MyMiddle();
@@ -84,6 +90,8 @@ $app->get('/product', 'Menu:product');
 $app->get('/registration', 'Registration:form');
 $app->post('/registration', 'Registration:save');
 $app->get('/cart', 'Basket:cart');
+$app->get('/login', 'Auth:form');
+$app->post('/login', 'Auth:check');
 
 $app->group('', function () {
     $this->get('/about', 'MainForm:about');

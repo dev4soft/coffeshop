@@ -28,8 +28,25 @@ class User
 
         return [
             'result'  => $result,
-            'errcode' => $this->db->errInfo[1],
+            'errcode' => ($result === -1) ? $this->db->errInfo[1] : '',
         ];
+    }
+
+
+    public function checkpass($email, $pass)
+    {
+        $result = $this->db->getRow(
+            'select user_id, first_name, pass from users where email = :email',
+            [
+                'email' => $email,
+            ]
+        );
+
+        if (!count($result)) {
+            return false;
+        }
+
+        return password_verify($pass, $result['pass']);
     }
 }
 

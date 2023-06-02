@@ -29,21 +29,25 @@
                 </div>
 
                 <div class="px-8 py-[50px] w-[400px] h-[300px]  ">
+                <form method="post" action="/login">
                     <input 
                     type="text" 
                     placeholder="Email" 
+                    name="email"
                     autocomplete='off'
                     class="border w-full h-5 px-3 py-5 my-2 hover:outline-none focus:outline-none focus:ring-gray-600 focus:ring-1 rounded-md"
                     >
                     <input 
                     type="password" 
+                    name="pass"
                     placeholder="Password" 
                     autocomplete='off'
                     class="border w-full h-5 px-3 py-5 my-2 hover:outline-none focus:outline-none focus:ring-gray-600 focus:ring-1 rounded-md">
                     <div class="w-full">
                         <button type="submit" style="background: rgba(26, 26, 26, 0.904);" class="mt-3 w-full text-white py-2 px-6 rounded-md hover:bg-yellow">Войти</button>
                     </div>
-                    <a href="/registration.php" class="text-sm hover:underline">Создать аккаунт</a>
+                    <a href="/registration" class="text-sm hover:underline">Создать аккаунт</a>
+                </form>
                 </div>
             
         </div>

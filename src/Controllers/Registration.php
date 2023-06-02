@@ -67,6 +67,7 @@ class Registration
             ]);
         }
 
+        error_log('user save');
         return $response->withJson([
             'error' => 0,
             'message' => 'Ok',
