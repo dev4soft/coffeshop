@@ -6,12 +6,14 @@ class Auth
 {
     private $view;
     private $user;
+    private $session;
 
 
-    public function __construct($view, $user)
+    public function __construct($view, $user, $session)
     {
         $this->view = $view;
         $this->user = $user;
+        $this->session = $session;
     }
 
 

@@ -46,6 +46,9 @@ class User
             return false;
         }
 
+        $this->session->username = $result['first_name'];
+        $this->session->user_id = $result['user_id'];
+
         return password_verify($pass, $result['pass']);
     }
 }

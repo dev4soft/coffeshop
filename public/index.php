@@ -14,6 +14,14 @@ $c = new \Slim\Container($configuration);
 
 $app = new \Slim\App($c);
 
+$app->add(
+    new \Slim\Middleware\Session([
+        'name' => 'coffeshop',
+        'autorefresh' => true,
+        'lifetime' => '1 hour',
+    ])
+);
+
 $container = $app->getContainer();
 
 $container['view'] = function ($container) {
@@ -28,6 +36,10 @@ $container['db'] = function ($container) {
     return new \Novokhatsky\DbConnect($container['configdb']);
 };
 
+$container['session'] = function ($container) {
+
+    return new \SlimSession\Helper();
+};
 
 class MyMiddle
 {
@@ -75,8 +87,11 @@ $container['Registration'] = function($container) {
 
 $container['Auth'] = function($container) {
 
-    return new \CoffeShop\Controllers\Auth($container['view'],
-             new \CoffeShop\Models\User($container['db']));
+    return new \CoffeShop\Controllers\Auth(
+        $container['view'],
+        new \CoffeShop\Models\User($container['db']),
+        $container['session']
+    );
 };
 
 $container['MyMiddle'] = function($container) {
