@@ -26,17 +26,17 @@ class Registration
         $data = $request->getParsedBody();
         $first_name = htmlspecialchars($data['first_name']);
         $last_name = htmlspecialchars($data['last_name']);
-        $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+        $email = filter_var($data['email'], FILTER_VALIDATE_EMAIL);
         $pass1 = $data['pass1'];
         $pass2 = $data['pass2'];
 
         // проверка данных формы
         // на не пустой адрес почты
-        if (empty($email)) {
+        if (!$email) {
 
             return $response->withJson([
                 'error' => 1,
-                'message' => 'на задан email!'
+                'message' => 'не корректный email!'
             ]);
         }
 
