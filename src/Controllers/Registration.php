@@ -49,7 +49,9 @@ class Registration
             ]);
         }
 
-        $result = $this->user->add($first_name, $last_name, $email, $pass1);
+        $hash = password_hash($pass1, PASSWORD_BCRYPT);
+
+        $result = $this->user->add($first_name, $last_name, $email, $hash);
 
         if ($result['result'] == -1) {
 
