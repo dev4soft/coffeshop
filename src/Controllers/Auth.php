@@ -29,11 +29,19 @@ class Auth
         $pass = htmlspecialchars($data['pass']);
         $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
 
-        if ($this->user->checkpass($email, $pass)) {
-            return $response->withRedirect('/');
+        if (!$this->user->checkpass($email, $pass)) {
+            return $response->withRedirect('/login');
         }
-        
-        return $response->withRedirect('/login');
+
+        // запрашиваем данные о пользователе
+        $result = $this->user->info($email);
+
+        error_log('------------------');
+        $this->session->username = $result['first_name'];
+        $this->session->user_id = $result['user_id'];
+        error_log($this->session->username);
+
+        return $response->withRedirect('/');
             
     }
 };

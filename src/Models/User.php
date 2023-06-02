@@ -35,21 +35,29 @@ class User
 
     public function checkpass($email, $pass)
     {
-        $result = $this->db->getRow(
-            'select user_id, first_name, pass from users where email = :email',
+        $hash = $this->db->getValue(
+            'select pass from users where email = :email',
             [
                 'email' => $email,
             ]
         );
 
-        if (!count($result)) {
+        if (empty($hash)) {
             return false;
         }
 
-        $this->session->username = $result['first_name'];
-        $this->session->user_id = $result['user_id'];
+        return password_verify($pass, $hash);
+    }
 
-        return password_verify($pass, $result['pass']);
+
+    public function info($email)
+    {
+        return $this->db->getRow(
+            'select user_id, first_name from users where email = :email',
+            [
+                'email' => $email,
+            ]
+        );
     }
 }
 
