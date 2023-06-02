@@ -150,17 +150,7 @@
             },
 
             create: function () {
-
-                if (!this.pass_valid()) {
-                    this.message = 'введенные пароли не совпадают или пустой пароль!';
-                    //return;
-                }
-
-                if (this.email === '') {
-                    this.message = 'email не введен!';
-                    //return;
-                }
-
+                this.message = '';
                 const data = new FormData;
                 data.set('first_name', this.first_name);
                 data.set('last_name', this.last_name);
