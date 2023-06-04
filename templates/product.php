@@ -22,6 +22,7 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="app">
     <?php
       require_once "header.html";
     ?> 
@@ -32,9 +33,9 @@
         <div class="flex flex-row lg:flex-wrap gap-7 justify-center"  >
           <div class="flex h-[420px] w-[400px]  xl:justify-center lg:hidden items-center mr-[20px]">
             <div class="flex flex-col p-5  items-center  text-3xl text-gray-700 fixed  ">
-              <a class="product_category" href='#coffee'>Кофе</a>
-              <a class="product_category" href='#tea'>Чай</a>
-              <a class="product_category" href='#dessert'>Десерты</a>
+                <template v-for="cat in category">
+                    <a class="product_category" v-bind:href="cat.link">{{ cat.name }}</a>
+                </template>
             </div>  
           </div>
           <div class="flex flex-col">
@@ -258,7 +259,7 @@
                 </div>
               </section>
 
-              <section id="dessert" class="mt-[100px]" >
+              <section id="desert" class="mt-[100px]" >
                 <div class="text-[100px] mt-[-50px] text-[#C0C0C0] ml-[-100px] lg:ml-0">Десерты</div>
                 <div class="flex flex-wrap justify-center">
                   <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
@@ -384,6 +385,49 @@
       
     <?php
         require_once "footer.html";
-      ?>
+    ?>
+    </div>
+
+<script src="/js/vue.min.js"></script>
+<script src="/js/vue-resource.min.js"></script>
+
+<script>
+    Vue.use(VueResource);
+    var app = new Vue({
+        el: '#app',
+        data: {
+            category: [
+                {link: '#coffee', name: 'Кофе'},
+                {link: '#tea', name: 'Чай'},
+                {link: '#desert', name: 'Десерты'}
+            ],
+            coffee: [],
+            tea: [],
+            deserts: [],
+        },
+
+        computed: {
+        },
+
+        watch: {
+        },
+
+        methods: {
+            load_category: function () {
+                this.$http.get('/get_category').then(
+                    function (otvet) {
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+        },
+
+        created: function() {
+            load_category();
+        }
+    })
+</script>
   </body>
 </html>
