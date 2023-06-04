@@ -31,7 +31,7 @@
           <div class="flex h-[420px] w-[400px]  xl:justify-center lg:hidden items-center mr-[20px]">
             <div class="flex flex-col p-5  items-center  text-3xl text-gray-700 fixed  ">
                 <template v-for="cat in category">
-                    <a class="product_category" v-bind:href="cat.link">{{ cat.name }}</a>
+                    <a class="product_category" v-bind:href="cat.link">{{ cat.category_name }}</a>
                 </template>
             </div>
           </div>
@@ -382,11 +382,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            category: [
-                {link: '#coffee', name: 'Кофе'},
-                {link: '#tea', name: 'Чай'},
-                {link: '#desert', name: 'Десерты'}
-            ],
+            category: [],
             coffee: [],
             tea: [],
             deserts: [],
@@ -402,6 +398,11 @@
             load_category: function () {
                 this.$http.get('/get_category').then(
                     function (otvet) {
+                        this.category = otvet.data;
+                        // после получения списка категорий, формируем список товаров
+                        for (let i = 0; i < this.category.length; i++) {
+                            console.log(this.category[i].category_id);
+                        }
                     },
                     function (errr) {
                         console.log(errr);
@@ -411,7 +412,7 @@
         },
 
         created: function() {
-            load_category();
+            this.load_category();
         }
     })
 </script>

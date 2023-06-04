@@ -13,7 +13,7 @@ class Product
     }
 
 
-    public function category()
+    public function listCategory()
     {
         return $this->db->getList(
             'select category_id, category_name, link from category order by category_id'

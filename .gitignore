@@ -1,3 +1,4 @@
 vendor/*
 config/db.php
 tags
+*.swp
