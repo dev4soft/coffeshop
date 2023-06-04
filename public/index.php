@@ -114,6 +114,7 @@ $app->get('/login', 'Auth:form');
 $app->post('/login', 'Auth:check');
 
 $app->get('/get_category', 'Shop:category');
+$app->get('/get_products', 'Shop:products');
 
 $app->group('', function () {
     $this->get('/about', 'MainForm:about');

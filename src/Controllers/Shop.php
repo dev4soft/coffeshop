@@ -19,5 +19,13 @@ class Shop
 
         return $response->withJson($category);
     }
+
+
+    public function products($request, $response)
+    {
+        $products = $this->product->listProducts();
+
+        return $response->withJson($products);
+    }
 };
 

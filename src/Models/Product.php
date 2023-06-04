@@ -13,6 +13,26 @@ class Product
     }
 
 
+    public function listProducts()
+    {
+        return $this->db->getList('
+            select
+                product_id,
+                title_name,
+                category_id,
+                image,
+                min(cost) as cost
+            from
+                product
+                join title using (title_id)
+            group by
+                title_id
+            order by
+                category_id, title_name
+        ');
+    }
+
+
     public function listCategory()
     {
         return $this->db->getList(
