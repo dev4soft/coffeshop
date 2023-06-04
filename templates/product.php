@@ -27,180 +27,358 @@
     ?> 
 
     <section class="p-[50px]">
-    <div class=" relative">
-        <div class="text-[100px] text-[#C0C0C0] absolute left-60 top-[-82px] xl:text-[80px] lg:top-[-75px] z-0 lg:left-0">Магазин</div>
-    </div>
+    
       <div class="container z-10">
         <div class="flex flex-row lg:flex-wrap gap-7 justify-center"  >
-          <div class="flex border w-[320px] h-[420px] xl:justify-center lg:hidden">
-            <div class="flex flex-col p-5 w-72  text-3xl text-gray-700 ">
-              <details class="">
-                <summary>Категории</summary>
-                <p>Кофе</p>
-                <p>Чай</p>
-                <p>Десерты</p>
-              </details>
-              <hr>
-              <details class="">
-                <summary>Категории</summary>
-                <p>Кофе</p>
-                <p>Чай</p>
-                <p>Десерты</p>
-              </details>
-              <hr>
-             
+          <div class="flex h-[420px] w-[400px]  xl:justify-center lg:hidden items-center mr-[20px]">
+            <div class="flex flex-col p-5  items-center  text-3xl text-gray-700 fixed  ">
+              <a class="product_category" href='#coffee'>Кофе</a>
+              <a class="product_category" href='#tea'>Чай</a>
+              <a class="product_category" href='#dessert'>Десерты</a>
             </div>  
           </div>
-          <div class="">
-            <div class="w-full flex justify-end ml-[-5rem] lg:justify-center lg:ml-0">
-              <div class="text-sm flex items-center">Сортировка:</div>
-              
-              <select name="pets" id="pet-select">
-                  <option value="">По умолчанию</option>
-                  <option value="up_price">Сначала не дорогие</option>
-                  <option value="bottom_price">Сначала дорогие</option>
-                  <option value="up_abc">По алфавиту, А-Я</option>
-                  <option value="bottom_abc">По алфавиту, Я-А</option>
-              </select>
-            </div>
+          <div class="flex flex-col">
             <div class="flex flex-wrap justify-center">
-
-              <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
-                <a class="" href="" >
-                  <div
-                  class="mx-auto w-72  product-border ">
-                    <img
-                    class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                    src="/resource/images/slides/coffe.jpg"
-                    alt="Product Image"
-                    />
-                    <div class="h-[100px]  flex flex-col justify-center  text-center ">
-                      <p class="text-2xl">Американо</p>
-                      <p class="text-lg">200₽</p>
+              <section id="coffee">
+                <div class="text-[100px] mt-[-50px]  text-[#C0C0C0] ml-[-100px] lg:ml-0">Кофе</div>    
+                <div class="flex flex-wrap justify-center">
+                  
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </a>
-                <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
-                  <div class="product-content mx-auto ">
-                    <div class="flex justify-center h-full items-center">
-                      <div class="w-full ">
-                        <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>        
+              </section>
+
+              <section id="tea" class="mt-[100px]" >
+              <div class="text-[100px] mt-[-50px] text-[#C0C0C0] ml-[-100px] lg:ml-0">Чай</div>
+              <div class="flex flex-wrap justify-center">
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
-                <a class="" href="" >
-                  <div
-                  class="mx-auto w-72  product-border ">
-                    <img
-                    class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                    src="/resource/images/slides/coffe.jpg"
-                    alt="Product Image"
-                    />
-                    <div class="h-[100px]  flex flex-col justify-center  text-center ">
-                      <p class="text-2xl">Американо</p>
-                      <p class="text-lg">200₽</p>
+              <section id="dessert" class="mt-[100px]" >
+                <div class="text-[100px] mt-[-50px] text-[#C0C0C0] ml-[-100px] lg:ml-0">Десерты</div>
+                <div class="flex flex-wrap justify-center">
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </a>
-                <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
-                  <div class="product-content mx-auto ">
-                    <div class="flex justify-center h-full items-center">
-                      <div class="w-full ">
-                        <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
+                    <a class="" href="" >
+                      <div
+                      class="mx-auto w-72  product-border ">
+                        <img
+                        class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
+                        src="/resource/images/slides/coffe.jpg"
+                        alt="Product Image"
+                        />
+                        <div class="h-[100px]  flex flex-col justify-center  text-center ">
+                          <p class="text-2xl">Американо</p>
+                          <p class="text-lg">200₽</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
+                      <div class="product-content mx-auto ">
+                        <div class="flex justify-center h-full items-center">
+                          <div class="w-full ">
+                            <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
-                <a class="" href="" >
-                  <div
-                  class="mx-auto w-72  product-border ">
-                    <img
-                    class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                    src="/resource/images/slides/coffe.jpg"
-                    alt="Product Image"
-                    />
-                    <div class="h-[100px]  flex flex-col justify-center  text-center ">
-                      <p class="text-2xl">Американо</p>
-                      <p class="text-lg">200₽</p>
-                    </div>
-                  </div>
-                </a>
-                <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
-                  <div class="product-content mx-auto ">
-                    <div class="flex justify-center h-full items-center">
-                      <div class="w-full ">
-                        <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
-                <a class="" href="" >
-                  <div
-                  class="mx-auto w-72  product-border ">
-                    <img
-                    class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                    src="/resource/images/slides/coffe.jpg"
-                    alt="Product Image"
-                    />
-                    <div class="h-[100px]  flex flex-col justify-center  text-center ">
-                      <p class="text-2xl">Американо</p>
-                      <p class="text-lg">200₽</p>
-                    </div>
-                  </div>
-                </a>
-                <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
-                  <div class="product-content mx-auto ">
-                    <div class="flex justify-center h-full items-center">
-                      <div class="w-full ">
-                        <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
-                <a class="" href="" >
-                  <div
-                  class="mx-auto w-72  product-border ">
-                    <img
-                    class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                    src="/resource/images/slides/coffe.jpg"
-                    alt="Product Image"
-                    />
-                    <div class="h-[100px]  flex flex-col justify-center  text-center ">
-                      <p class="text-2xl">Американо</p>
-                      <p class="text-lg">200₽</p>
-                    </div>
-                  </div>
-                </a>
-                <div class="flex justify-center items-center w-[200px]  absolute top-[50%] left-[15%]">
-                  <div class="product-content mx-auto ">
-                    <div class="flex justify-center h-full items-center">
-                      <div class="w-full ">
-                        <button class="product-button text-white text-[14px] rounded-md " >В корзину</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
+              </section>
             </div>
           </div>
+
+
+      
+
         </div>
       </div>
     </section>
+
+    
+
+
     <div class="h-screen"></div>
 
       

@@ -140,6 +140,12 @@ select {
     background: white;
 }
 
+.product_category{
+    margin: 10px;
+    border-bottom: 3px solid gray;
+    border-style: dotted;
+}
+
 
 
 
