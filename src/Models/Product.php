@@ -13,9 +13,11 @@ class Product
     }
 
 
-    public function dt()
+    public function category()
     {
-        return $this->db->getValue('select now()');
+        return $this->db->getList(
+            'select category_id, category_name, link from category order by category_id'
+        );
     }
 }
 

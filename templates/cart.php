@@ -78,9 +78,7 @@
             <hr width="70" />
           </div>
           <div class="basis-1/3">
-            
             <form action="" class="w-full border h-full">
-           
               <div
                 class="w-full flex flex-wrap p-[50px] gap-5 lg:flex-col md:p-[25px]"
               >

@@ -18,9 +18,7 @@
     <title>Document</title>
 </head>
 <body>  
-      <?php
-        require_once "header.html";
-      ?> 
+      <?php  require_once "header.html"; ?> 
         <section id="main">
           <div class="w-full h-full custom-img ">
             <img src="resource/images/mainFon/fon7.png" alt="">
@@ -155,7 +153,6 @@
             C1915.898,10.076,1910.912,9.958,1906.688,12.029z"></path>
         </svg>
         <section id="service" class=" h-auto py-[100px]" >
-            
             <div class="container h-full">
                 <div class=" w-full relative">
                 <div
@@ -163,7 +160,6 @@
               >
                 Наш сервис
               </div>
-                    
                     <div class="flex flex-wrap p-[50px]  justify-center">
 
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
@@ -197,7 +193,6 @@
                                 This is the perfect place to find a nice and cozy spot to sip some.
                             </div>
                         </div>
-                        
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
                             <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
                             <h3 class="text-2xl">fsdfsd</h3>
@@ -213,12 +208,9 @@
                                 This is the perfect place to find a nice and cozy spot to sip some.
                             </div>
                         </div>
-
-                        
                     </div>
-                </div>     
+                </div>
             </div>
-            
         </section>
         <svg class="relative top-[60px] rotate-180" preserveAspectRatio="none" width="100%" height="60px" viewBox="0 0 1920 27" enable-background="new 0 0 1920 27">
             <path style="fill:rgb(255, 255, 255)" d="M1906.688,12.029c-1.653-1.78-3.943-0.347-5.823-0.883c-0.623,0.442-0.879,1.208-1.873,1.044
@@ -350,7 +342,6 @@
 
       <section class="" style="background: rgba(26, 26, 26, 0.904);">
         <div class="h-auto w-full py-[100px]">
-          
           <div class="container mx-auto ">
           <div class="flex text-center justify-center mb-[50px] text-white text-3xl">Где нас найти?</div>
             <div class=" flex flex-wrap columns-2xs justify-center gap-10 ">
@@ -378,15 +369,12 @@
                   </div>
                 </div>
               </div>
-            </div>             
-          </div> 
+            </div>
+          </div>
         </div>
-      </section>   
-      <?php
-        require_once "footer.html";
-      ?>
+      </section>
+      <?php require_once "footer.html"; ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="/js/main.js"></script>
-    
 </body>
 </html>

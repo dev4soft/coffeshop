@@ -23,12 +23,9 @@
   </head>
   <body>
     <div id="app">
-    <?php
-      require_once "header.html";
-    ?> 
+    <?php require_once "header.html"; ?> 
 
     <section class="p-[50px]">
-    
       <div class="container z-10">
         <div class="flex flex-row lg:flex-wrap gap-7 justify-center"  >
           <div class="flex h-[420px] w-[400px]  xl:justify-center lg:hidden items-center mr-[20px]">
@@ -36,14 +33,13 @@
                 <template v-for="cat in category">
                     <a class="product_category" v-bind:href="cat.link">{{ cat.name }}</a>
                 </template>
-            </div>  
+            </div>
           </div>
           <div class="flex flex-col">
             <div class="flex flex-wrap justify-center">
               <section id="coffee">
-                <div class="text-[100px] mt-[-50px]  text-[#C0C0C0] ml-[-100px] lg:ml-0">Кофе</div>    
+                <div class="text-[100px] mt-[-50px]  text-[#C0C0C0] ml-[-100px] lg:ml-0">Кофе</div>
                 <div class="flex flex-wrap justify-center">
-                  
                   <div id="coffee" class=" mx-4 h-[auto] product my-2" > 
                     <a class="" href="" >
                       <div
@@ -147,7 +143,7 @@
                       </div>
                     </div>
                   </div>
-                </div>        
+                </div>
               </section>
 
               <section id="tea" class="mt-[100px]" >
@@ -369,23 +365,13 @@
               </section>
             </div>
           </div>
-
-
-      
-
         </div>
       </div>
     </section>
 
-    
-
-
     <div class="h-screen"></div>
 
-      
-    <?php
-        require_once "footer.html";
-    ?>
+    <?php require_once "footer.html"; ?>
     </div>
 
 <script src="/js/vue.min.js"></script>

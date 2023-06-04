@@ -42,7 +42,6 @@ class Auth
         error_log($this->session->username);
 
         return $response->withRedirect('/');
-            
     }
 };
 

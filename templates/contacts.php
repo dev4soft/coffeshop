@@ -53,7 +53,6 @@
                 <button class="w-full mt-5 rounded-md bg-[#2f2f2f] px-10 py-2 text-white">Отправить</button>
               </div>
             </form>
-                
           </div>
           <div class="basis-1/3 flex items-center">
             <div class="bg-hours">
@@ -75,7 +74,6 @@
             </div>
           </div>
         </div>
-          
       </div>
     </section>
 
@@ -85,6 +83,5 @@
       </div>
     </section>
     <?php require_once "footer.html";?>
-    
     <script src="/js/main.js"></script>
 </html>

@@ -18,12 +18,9 @@
 </head>
 
 <body >
-    <?php
-    require_once "header.html";
-    ?>
+    <?php require_once "header.html"; ?>
     <div class="relative flex h-[90vh]  flex-col justify-center  py-6 sm:py-12" style="background: rgba(26, 26, 26, 0.904);">
         <div class="relative sm:w-96 mx-auto bg-white rounded-xl  ">
-                
                 <div class="pt-6 text-center">
                     <span class="text-2xl font-light text-gray-600 ">Авторизация</span>
                 </div>
@@ -49,13 +46,9 @@
                     <a href="/registration" class="text-sm hover:underline">Создать аккаунт</a>
                 </form>
                 </div>
-            
         </div>
     </div>
-    <?php
-    require_once "footer.html";
-    ?>
+    <?php require_once "footer.html"; ?>
     <script src="/js/main.js"></script>
 </body>
-
 </html>

@@ -25,9 +25,7 @@
     <title>Document</title>
   </head>
   <body>
-  <?php
-    require_once "header.html";
-    ?>
+  <?php require_once "header.html"; ?>
     <div id="app" class="relative flex h-[90vh] flex-col justify-center  " style="background: rgba(26, 26, 26, 0.904);">
       <div class="relative  mx-auto w-[400px]">
       <div class=" bg-white rounded-xl p-5">
@@ -67,7 +65,6 @@
               v-model="pass1"
               autocomplete='off'
               class="border w-full h-5 px-3 py-5 my-2 hover:outline-none focus:outline-none focus:ring-gray-600 focus:ring-1 rounded-md"
-              
             />
             <input
               type="password"
@@ -92,9 +89,7 @@
       </div>
       </div>
     </div>
-    <?php
-    require_once "footer.html";
-    ?>
+    <?php require_once "footer.html"; ?>
 
 <script src="/js/vue.min.js"></script>
 <script src="/js/vue-resource.min.js"></script>
