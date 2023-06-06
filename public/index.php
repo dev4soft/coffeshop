@@ -88,6 +88,7 @@ $container['Auth'] = function($container) {
 };
 
 $app->get('/', 'MainForm:index');
+$app->get('/about', 'MainForm:about');
 $app->get('/contacts', 'MainForm:contacts');
 $app->get('/product', 'Menu:product');
 $app->get('/registration', 'Registration:form');

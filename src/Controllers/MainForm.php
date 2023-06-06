@@ -29,9 +29,7 @@ class MainForm
 
     public function about($request, $response)
     {
-        $response->getBody()->write("About of us");
-
-        return $response;
+        return $this->view->render($response, 'about.php');
     }
 };
 
