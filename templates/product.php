@@ -235,7 +235,17 @@
 
 
             add_cart: function (product_id) {
+                const data = new FormData;
+                data.set('product_id', product_id);
                 console.log(product_id);
+                this.$http.post('/add_cart', data).then(
+                    function (otvet) {
+                        console.log('otvet');
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
             },
         },
 

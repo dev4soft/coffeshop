@@ -60,7 +60,11 @@ $container['Menu'] = function($container) {
 };
 
 $container['Basket'] = function($container) {
-    return new \CoffeShop\Controllers\Basket($container['view'], $container['product']);
+    return new \CoffeShop\Controllers\Basket(
+        $container['view'],
+        $container['product'],
+        $container['session']
+    );
 };
 
 $container['Registration'] = function($container) {
@@ -101,6 +105,7 @@ $app->get('/get_products', 'Shop:products');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');
+    $this->post('/add_cart', 'Basket:addToCart');
     $this->get('/profile', 'Profile:index');
 })->add('Auth:check');
 
