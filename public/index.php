@@ -32,64 +32,58 @@ $container['view'] = function () {
 $container['configdb'] = require '../config/db.php';
 
 $container['db'] = function ($container) {
-
     return new \Novokhatsky\DbConnect($container['configdb']);
 };
 
-$container['session'] = function () {
+$container['user'] = function ($container) {
+    return new \CoffeShop\Models\User($container['db']);
+};
 
+$container['product'] = function ($container) {
+    return new \CoffeShop\Models\Product($container['db']);
+};
+
+$container['session'] = function () {
     return new \SlimSession\Helper();
 };
 
 $container['MainForm'] = function($container) {
-
-    return new \CoffeShop\Controllers\MainForm($container['view'],
-             new \CoffeShop\Models\Product($container['db']));
+    return new \CoffeShop\Controllers\MainForm($container['view'], $container['product']);
 };
 
 $container['Shop'] = function($container) {
-
-    return new \CoffeShop\Controllers\Shop(new \CoffeShop\Models\Product($container['db']));
+    return new \CoffeShop\Controllers\Shop($container['product']);
 };
 
 $container['Menu'] = function($container) {
-
-    return new \CoffeShop\Controllers\Menu($container['view'],
-             new \CoffeShop\Models\Product($container['db']));
+    return new \CoffeShop\Controllers\Menu($container['view'], $container['product']);
 };
 
 $container['Basket'] = function($container) {
-
-    return new \CoffeShop\Controllers\Basket($container['view'],
-             new \CoffeShop\Models\Product($container['db']));
+    return new \CoffeShop\Controllers\Basket($container['view'], $container['product']);
 };
 
 $container['Registration'] = function($container) {
-
-    return new \CoffeShop\Controllers\Registration($container['view'],
-             new \CoffeShop\Models\User($container['db']));
+    return new \CoffeShop\Controllers\Registration($container['view'], $container['user']);
 };
 
 $container['Login'] = function($container) {
-
     return new \CoffeShop\Controllers\Login(
         $container['view'],
-        new \CoffeShop\Models\User($container['db']),
+        $container['user'],
         $container['session']
     );
 };
 
 $container['Profile'] = function($container) {
-
     return new \CoffeShop\Controllers\Profile(
         $container['view'],
-        new \CoffeShop\Models\User($container['db']),
+        $container['user'],
         $container['session']
     );
 };
 
 $container['Auth'] = function($container) {
-
     return new \CoffeShop\Controllers\Auth($container['session']);
 };
 
