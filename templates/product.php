@@ -62,6 +62,7 @@
                                     <div class="flex justify-center h-full items-center">
                                         <div class="w-full ">
                                             <button
+                                                v-on:click="add_cart(el.product_id)"
                                                 class="product-button text-white text-[14px] rounded-md " >
                                                 В корзину
                                             </button>
@@ -230,6 +231,11 @@
                         console.log(errr);
                     }
                 );
+            },
+
+
+            add_cart: function (product_id) {
+                console.log(product_id);
             },
         },
 

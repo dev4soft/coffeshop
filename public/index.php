@@ -24,7 +24,7 @@ $app->add(
 
 $container = $app->getContainer();
 
-$container['view'] = function ($container) {
+$container['view'] = function () {
 
     return new \Slim\Views\PhpRenderer('../templates');
 };
@@ -36,29 +36,9 @@ $container['db'] = function ($container) {
     return new \Novokhatsky\DbConnect($container['configdb']);
 };
 
-$container['session'] = function ($container) {
+$container['session'] = function () {
 
     return new \SlimSession\Helper();
-};
-
-class MyMiddle
-{
-    public function __invoke($request, $response, $next)
-    {
-        error_log("middleware");
-
-
-        return $next($request, $response);
-    }
-
-
-    public function ware($request, $response, $next)
-    {
-        error_log("ware !!!  middleware");
-
-
-        return $next($request, $response);
-    }
 };
 
 $container['MainForm'] = function($container) {
@@ -90,18 +70,18 @@ $container['Registration'] = function($container) {
              new \CoffeShop\Models\User($container['db']));
 };
 
-$container['Auth'] = function($container) {
+$container['Login'] = function($container) {
 
-    return new \CoffeShop\Controllers\Auth(
+    return new \CoffeShop\Controllers\Login(
         $container['view'],
         new \CoffeShop\Models\User($container['db']),
         $container['session']
     );
 };
 
-$container['MyMiddle'] = function($container) {
+$container['Auth'] = function($container) {
 
-    return new MyMiddle();
+    return new \CoffeShop\Controllers\Auth($container['session']);
 };
 
 $app->get('/', 'MainForm:index');
@@ -109,16 +89,15 @@ $app->get('/contacts', 'MainForm:contacts');
 $app->get('/product', 'Menu:product');
 $app->get('/registration', 'Registration:form');
 $app->post('/registration', 'Registration:save');
-$app->get('/cart', 'Basket:cart');
-$app->get('/login', 'Auth:form');
-$app->post('/login', 'Auth:check');
+$app->get('/login', 'Login:form');
+$app->post('/login', 'Login:check');
 
 $app->get('/get_category', 'Shop:category');
 $app->get('/get_products', 'Shop:products');
 
 $app->group('', function () {
-    $this->get('/about', 'MainForm:about');
-})->add('MyMiddle:ware');
+    $this->get('/cart', 'Basket:cart');
+})->add('Auth:check');
 
 $app->run();
 

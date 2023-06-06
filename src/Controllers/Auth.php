@@ -4,44 +4,28 @@ namespace CoffeShop\Controllers;
 
 class Auth
 {
-    private $view;
-    private $user;
     private $session;
 
 
-    public function __construct($view, $user, $session)
+    public function __construct($session)
     {
-        $this->view = $view;
-        $this->user = $user;
         $this->session = $session;
     }
 
 
-    public function form($request, $response)
+    private function access()
     {
-        return $this->view->render($response, 'login.php');
+        return $this->session->user_id;
     }
 
 
-    public function check($request, $response)
+    public function check($request, $response, $next)
     {
-        $data = $request->getParsedBody();
-        $pass = htmlspecialchars($data['pass']);
-        $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-
-        if (!$this->user->checkpass($email, $pass)) {
+        if (!$this->access()) {
             return $response->withRedirect('/login');
         }
 
-        // запрашиваем данные о пользователе
-        $result = $this->user->info($email);
-
-        error_log('------------------');
-        $this->session->username = $result['first_name'];
-        $this->session->user_id = $result['user_id'];
-        error_log($this->session->username);
-
-        return $response->withRedirect('/');
+        return $next($request, $response);
     }
 };
 
