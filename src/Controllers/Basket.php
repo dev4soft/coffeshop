@@ -29,12 +29,21 @@ class Basket
         $product_id = htmlspecialchars($data['product_id']);
         $user_id = $this->session->user_id;
 
+        if (!$user_id) {
+
+            return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
+        }
+
         $this->product->addToOrder($product_id, $user_id);
 
         $product_in_cart = 0; //$this->product->productInCart($user_id);
 
         return $response->withJson([
-            'test' => 'test'
+            'error' => 0,
+            'url' => '/product',
         ]);
     }
 };
