@@ -79,6 +79,15 @@ $container['Login'] = function($container) {
     );
 };
 
+$container['Profile'] = function($container) {
+
+    return new \CoffeShop\Controllers\Profile(
+        $container['view'],
+        new \CoffeShop\Models\User($container['db']),
+        $container['session']
+    );
+};
+
 $container['Auth'] = function($container) {
 
     return new \CoffeShop\Controllers\Auth($container['session']);
@@ -97,6 +106,7 @@ $app->get('/get_products', 'Shop:products');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');
+    $this->get('/profile', 'Profile:index');
 })->add('Auth:check');
 
 $app->run();

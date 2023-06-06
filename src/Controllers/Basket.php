@@ -19,5 +19,10 @@ class Basket
     {
         return $this->view->render($response, 'cart.php');
     }
+
+
+    public function add_cart($request, $response)
+    {
+    }
 };
 
