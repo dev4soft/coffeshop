@@ -99,6 +99,7 @@
                                     <div class="flex justify-center h-full items-center">
                                         <div class="w-full ">
                                             <button
+                                                v-on:click="add_cart(el.product_id)"
                                                 class="product-button text-white text-[14px] rounded-md " >
                                                 В корзину
                                             </button>
@@ -135,6 +136,7 @@
                                     <div class="flex justify-center h-full items-center">
                                         <div class="w-full ">
                                             <button
+                                                v-on:click="add_cart(el.product_id)"
                                                 class="product-button text-white text-[14px] rounded-md " >
                                                 В корзину
                                             </button>
@@ -153,7 +155,6 @@
       </div>
     </section>
 
-    <div class="h-screen"></div>
 
     <?php require_once "footer.html"; ?>
     </div>
@@ -171,6 +172,7 @@
             tea: [],
             deserts: [],
             products: [],
+            sum_cart: 0,
         },
 
         computed: {
@@ -234,6 +236,18 @@
             },
 
 
+            summa_cart: function () {
+                this.$http.get('/summa_cart').then(
+                    function (otvet) {
+                        this.sum_cart = otvet.data.sum_cart;
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
             add_cart: function (product_id) {
                 const data = new FormData;
                 data.set('product_id', product_id);
@@ -241,6 +255,8 @@
                     function (otvet) {
                         if (otvet.data.error == 1) {
                             window.location.href = otvet.data.url;
+                        } else {
+                            this.summa_cart();
                         }
                     },
                     function (errr) {
@@ -252,6 +268,7 @@
 
         created: function() {
             this.load_category();
+            this.summa_cart();
         }
     })
 </script>

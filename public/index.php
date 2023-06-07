@@ -103,6 +103,7 @@ $app->post('/login', 'Login:check');
 $app->get('/get_category', 'Shop:category');
 $app->get('/get_products', 'Shop:products');
 $app->post('/add_cart', 'Basket:addToCart');
+$app->get('/summa_cart', 'Basket:summaCart');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');

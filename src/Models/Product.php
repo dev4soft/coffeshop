@@ -62,6 +62,20 @@ class Product
     }
 
 
+    public function summaCart($user_id)
+    {
+        return $this->db->getValue('
+            select sum(cost * quantity) from product_orders where
+                order_id = (select order_id from orders where user_id = :user_id and status_id = :status_id)
+            ',
+            [
+                'user_id' => $user_id,
+                'status_id' => 1,
+            ]
+        );
+    }
+
+
     public function addToOrder($product_id, $user_id)
     {
         $order_id = $this->orderId($user_id);
@@ -72,7 +86,8 @@ class Product
                 :order_id,
                 :product_id,
                 (select cost from product where product_id = :product_id)
-            )',
+            ) on duplicate key update quantity = quantity + 1
+            ',
             [
                 'order_id' => $order_id,
                 'product_id' => $product_id

@@ -39,11 +39,19 @@ class Basket
 
         $this->product->addToOrder($product_id, $user_id);
 
-        $product_in_cart = 0; //$this->product->productInCart($user_id);
-
         return $response->withJson([
             'error' => 0,
-            'url' => '/product',
+        ]);
+    }
+
+
+    public function summaCart($request, $response)
+    {
+        $user_id = $this->session->user_id;
+        $sum_cart = $this->product->summaCart($user_id);
+
+        return $response->withJson([
+            'sum_cart' => $sum_cart,
         ]);
     }
 };
