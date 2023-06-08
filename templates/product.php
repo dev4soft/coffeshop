@@ -172,7 +172,6 @@
             tea: [],
             deserts: [],
             products: [],
-            sum_cart: 0,
         },
 
         computed: {
@@ -239,7 +238,13 @@
             summa_cart: function () {
                 this.$http.get('/summa_cart').then(
                     function (otvet) {
-                        this.sum_cart = otvet.data.sum_cart;
+                        const basket = document.getElementById('basket');
+                        const sum = new Number(otvet.data.sum_cart);
+                        if (sum) {
+                            basket.innerHTML = otvet.data.sum_cart + ' р.';
+                        } else {
+                            basket.innerHTML ='0 р.';
+                        }
                     },
                     function (errr) {
                         console.log(errr);

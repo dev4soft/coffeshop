@@ -48,7 +48,11 @@ $container['session'] = function () {
 };
 
 $container['MainForm'] = function($container) {
-    return new \CoffeShop\Controllers\MainForm($container['view'], $container['product']);
+    return new \CoffeShop\Controllers\MainForm(
+        $container['view'],
+        $container['product'],
+        $container['session'],
+    );
 };
 
 $container['Shop'] = function($container) {
