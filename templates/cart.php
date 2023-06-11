@@ -40,6 +40,7 @@
                   <td class="w-[25%]">Количество</td>
                   <td class="w-[25%]">Цена ₽</td>
                 </tr>
+                <template>
                 <tr class="border-t-2 h-[70px]">
                   <td class="text-start">Латте</td>
                   <td>
@@ -64,6 +65,7 @@
                   </td>
                   <td>200 ₽</td>
                 </tr>
+                </template>
                 <tfoot>
                   <tr class="border-t-2 h-[70px]">
                     <td></td>
@@ -144,5 +146,45 @@
       </div>
     </section>
     <?php require_once "footer.html";?>
+<script src="/js/vue.min.js"></script>
+<script src="/js/vue-resource.min.js"></script>
+
+<script>
+    Vue.use(VueResource);
+    var app = new Vue({
+        el: '#app',
+        data: {
+        },
+
+        computed: {
+        },
+
+        watch: {
+        },
+
+        methods: {
+            summa_cart: function () {
+                this.$http.get('/summa_cart').then(
+                    function (otvet) {
+                        const basket = document.getElementById('basket');
+                        const sum = new Number(otvet.data.sum_cart);
+                        if (sum) {
+                            basket.innerHTML = otvet.data.sum_cart + ' р.';
+                        } else {
+                            basket.innerHTML ='0 р.';
+                        }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+        },
+
+        created: function() {
+            this.summa_cart();
+        }
+    })
+</script>
   </body>
 </html>

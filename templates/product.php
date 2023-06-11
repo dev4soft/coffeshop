@@ -240,8 +240,9 @@
                     function (otvet) {
                         const basket = document.getElementById('basket');
                         const sum = new Number(otvet.data.sum_cart);
+
                         if (sum) {
-                            basket.innerHTML = otvet.data.sum_cart + ' р.';
+                            basket.innerHTML = sum + ' р.';
                         } else {
                             basket.innerHTML ='0 р.';
                         }

@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Хост:                         192.168.30.223
--- Версия сервера:               10.5.18-MariaDB-log - Source distribution
--- Операционная система:         Linux
--- HeidiSQL Версия:              12.4.0.6670
+-- РҐРѕСЃС‚:                         192.168.30.223
+-- Р’РµСЂСЃРёСЏ СЃРµСЂРІРµСЂР°:               10.5.18-MariaDB-log - Source distribution
+-- РћРїРµСЂР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР°:         Linux
+-- HeidiSQL Р’РµСЂСЃРёСЏ:              12.4.0.6670
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -14,7 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Дамп структуры для таблица coffeshop.category
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.category
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `category_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
@@ -24,13 +24,13 @@ CREATE TABLE IF NOT EXISTS `category` (
   UNIQUE KEY `category_name` (`category_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.category: ~3 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.category: ~3 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `category` (`category_id`, `category_name`, `link`) VALUES
-	(1, 'Кофе', '#coffee'),
-	(2, 'Чай', '#tea'),
-	(3, 'Десерты', '#desert');
+	(1, 'РљРѕС„Рµ', '#coffee'),
+	(2, 'Р§Р°Р№', '#tea'),
+	(3, 'Р”РµСЃРµСЂС‚С‹', '#desert');
 
--- Дамп структуры для таблица coffeshop.orders
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.orders
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -40,14 +40,18 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `address` varchar(150) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `comments` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`order_id`)
+  PRIMARY KEY (`order_id`),
+  KEY `FK_orders_users` (`user_id`),
+  KEY `FK_orders_status` (`status_id`),
+  CONSTRAINT `FK_orders_status` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.orders: ~1 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.orders: ~1 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `orders` (`order_id`, `user_id`, `status_id`, `dt_tm`, `address`, `phone`, `comments`) VALUES
 	(1, 4, 1, NULL, NULL, NULL, NULL);
 
--- Дамп структуры для таблица coffeshop.product
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.product
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `product_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -61,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `FK_product_trait` FOREIGN KEY (`trait_id`) REFERENCES `trait` (`trait_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product: ~42 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.product: ~42 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 	(1, 1, 1, 80.00),
 	(2, 2, 1, 90.00),
@@ -106,21 +110,32 @@ REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 	(41, 4, 18, 90.00),
 	(42, 5, 18, 120.00);
 
--- Дамп структуры для таблица coffeshop.product_orders
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.product_orders
 DROP TABLE IF EXISTS `product_orders`;
 CREATE TABLE IF NOT EXISTS `product_orders` (
   `order_id` int(10) unsigned NOT NULL,
   `product_id` smallint(5) unsigned NOT NULL,
   `quantity` smallint(5) unsigned NOT NULL DEFAULT 1,
   `cost` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`order_id`,`product_id`)
+  PRIMARY KEY (`order_id`,`product_id`),
+  KEY `FK_product_orders_product` (`product_id`),
+  CONSTRAINT `FK_product_orders_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product_orders: ~1 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.product_orders: ~10 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `product_orders` (`order_id`, `product_id`, `quantity`, `cost`) VALUES
-	(1, 4, 1, 75.00);
+	(1, 1, 3, 80.00),
+	(1, 4, 4, 75.00),
+	(1, 10, 5, 65.00),
+	(1, 13, 8, 85.00),
+	(1, 23, 1, 55.00),
+	(1, 27, 1, 40.00),
+	(1, 29, 1, 55.00),
+	(1, 35, 1, 55.00),
+	(1, 39, 1, 100.00),
+	(1, 41, 1, 90.00);
 
--- Дамп структуры для таблица coffeshop.status
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.status
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE IF NOT EXISTS `status` (
   `status_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
@@ -129,13 +144,13 @@ CREATE TABLE IF NOT EXISTS `status` (
   UNIQUE KEY `status_name` (`status_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.status: ~3 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.status: ~3 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `status` (`status_id`, `status_name`) VALUES
-	(3, 'выполнен'),
-	(2, 'доставка'),
-	(1, 'не оформленный');
+	(3, 'РІС‹РїРѕР»РЅРµРЅ'),
+	(2, 'РґРѕСЃС‚Р°РІРєР°'),
+	(1, 'РЅРµ РѕС„РѕСЂРјР»РµРЅРЅС‹Р№');
 
--- Дамп структуры для таблица coffeshop.title
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.title
 DROP TABLE IF EXISTS `title`;
 CREATE TABLE IF NOT EXISTS `title` (
   `title_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -148,28 +163,28 @@ CREATE TABLE IF NOT EXISTS `title` (
   CONSTRAINT `FK_title_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.title: ~18 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.title: ~18 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `title` (`title_id`, `title_name`, `category_id`, `image`) VALUES
-	(1, 'Латте', 1, NULL),
-	(2, 'Капучино', 1, NULL),
-	(3, 'Эспрессо', 1, NULL),
-	(4, 'Американо', 1, NULL),
-	(5, 'Мокко', 1, NULL),
-	(6, 'Ристретто', 1, NULL),
-	(7, 'Чай с молоком', 2, NULL),
-	(8, 'Фруктовый час', 2, NULL),
-	(9, 'Черный чай', 2, NULL),
-	(10, 'Белый чай', 2, NULL),
-	(11, 'Зеленый чай', 2, NULL),
-	(12, 'Пуэр', 2, NULL),
-	(13, 'Тирамису', 3, NULL),
-	(14, 'Чизкейк', 3, NULL),
-	(15, 'Безе', 3, NULL),
-	(16, 'Панна котта', 3, NULL),
-	(17, 'Марципан', 3, NULL),
-	(18, 'Брауни', 3, NULL);
+	(1, 'Р›Р°С‚С‚Рµ', 1, NULL),
+	(2, 'РљР°РїСѓС‡РёРЅРѕ', 1, NULL),
+	(3, 'Р­СЃРїСЂРµСЃСЃРѕ', 1, NULL),
+	(4, 'РђРјРµСЂРёРєР°РЅРѕ', 1, NULL),
+	(5, 'РњРѕРєРєРѕ', 1, NULL),
+	(6, 'Р РёСЃС‚СЂРµС‚С‚Рѕ', 1, NULL),
+	(7, 'Р§Р°Р№ СЃ РјРѕР»РѕРєРѕРј', 2, NULL),
+	(8, 'Р¤СЂСѓРєС‚РѕРІС‹Р№ С‡Р°СЃ', 2, NULL),
+	(9, 'Р§РµСЂРЅС‹Р№ С‡Р°Р№', 2, NULL),
+	(10, 'Р‘РµР»С‹Р№ С‡Р°Р№', 2, NULL),
+	(11, 'Р—РµР»РµРЅС‹Р№ С‡Р°Р№', 2, NULL),
+	(12, 'РџСѓСЌСЂ', 2, NULL),
+	(13, 'РўРёСЂР°РјРёСЃСѓ', 3, NULL),
+	(14, 'Р§РёР·РєРµР№Рє', 3, NULL),
+	(15, 'Р‘РµР·Рµ', 3, NULL),
+	(16, 'РџР°РЅРЅР° РєРѕС‚С‚Р°', 3, NULL),
+	(17, 'РњР°СЂС†РёРїР°РЅ', 3, NULL),
+	(18, 'Р‘СЂР°СѓРЅРё', 3, NULL);
 
--- Дамп структуры для таблица coffeshop.trait
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.trait
 DROP TABLE IF EXISTS `trait`;
 CREATE TABLE IF NOT EXISTS `trait` (
   `trait_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
@@ -178,15 +193,15 @@ CREATE TABLE IF NOT EXISTS `trait` (
   UNIQUE KEY `trait_name` (`trait_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.trait: ~5 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.trait: ~5 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `trait` (`trait_id`, `trait_name`) VALUES
-	(4, '100 г'),
-	(5, '200 г'),
-	(1, '200 мл'),
-	(2, '300 мл'),
-	(3, '400 мл');
+	(4, '100 Рі'),
+	(5, '200 Рі'),
+	(1, '200 РјР»'),
+	(2, '300 РјР»'),
+	(3, '400 РјР»');
 
--- Дамп структуры для таблица coffeshop.users
+-- Р”Р°РјРї СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ С‚Р°Р±Р»РёС†Р° coffeshop.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -200,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.users: ~6 rows (приблизительно)
+-- Р”Р°РјРї РґР°РЅРЅС‹С… С‚Р°Р±Р»РёС†С‹ coffeshop.users: ~6 rows (РїСЂРёР±Р»РёР·РёС‚РµР»СЊРЅРѕ)
 REPLACE INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `pass`, `key`, `active`) VALUES
 	(1, '1', '1', '1', '1', NULL, 0),
 	(3, '1', '1', '2@ru.ru', '$2y$10$z2m0Kk2FfYF1cZRO8e9CvO.5mcH2wtp/SzyFJ8EiymyoBQfE37Voe', NULL, 0),
