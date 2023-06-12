@@ -48,7 +48,7 @@
                                 <div class="mx-auto w-72  product-border ">
                                     <img
                                         class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                                        src="/resource/images/slides/coffe.jpg"
+                                        v-bind:src="el.image"
                                         alt="Product Image"
                                     />
                                     <div class="h-[100px]  flex flex-col justify-center  text-center ">
@@ -85,7 +85,7 @@
                                 <div class="mx-auto w-72  product-border ">
                                     <img
                                         class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                                        src="/resource/images/slides/coffe.jpg"
+                                        v-bind:src="el.image"
                                         alt="Product Image"
                                     />
                                     <div class="h-[100px]  flex flex-col justify-center  text-center ">
@@ -122,7 +122,7 @@
                                 <div class="mx-auto w-72  product-border ">
                                     <img
                                         class="h-[auto] w-full object-cover object-center rounded-t-[20px] p-1"
-                                        src="/resource/images/slides/coffe.jpg"
+                                        v-bind:src="el.image"
                                         alt="Product Image"
                                     />
                                     <div class="h-[100px]  flex flex-col justify-center  text-center ">
