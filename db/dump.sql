@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `FK_product_trait` FOREIGN KEY (`trait_id`) REFERENCES `trait` (`trait_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product: ~42 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.product: ~28 rows (приблизительно)
 REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 	(1, 1, 1, 80.00),
 	(2, 2, 1, 90.00),
@@ -79,12 +79,6 @@ REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 	(10, 1, 4, 65.00),
 	(11, 2, 4, 75.00),
 	(12, 3, 4, 85.00),
-	(13, 1, 5, 85.00),
-	(14, 2, 5, 90.00),
-	(15, 3, 5, 95.00),
-	(16, 1, 6, 80.00),
-	(17, 2, 6, 100.00),
-	(18, 3, 6, 120.00),
 	(19, 2, 7, 50.00),
 	(20, 3, 7, 70.00),
 	(21, 2, 8, 60.00),
@@ -93,20 +87,12 @@ REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 	(24, 3, 9, 60.00),
 	(25, 2, 10, 70.00),
 	(26, 3, 10, 80.00),
-	(27, 2, 11, 40.00),
-	(28, 3, 11, 50.00),
-	(29, 2, 12, 55.00),
-	(30, 3, 12, 75.00),
 	(31, 4, 13, 80.00),
 	(32, 5, 13, 100.00),
 	(33, 4, 14, 60.00),
 	(34, 5, 14, 70.00),
-	(35, 4, 15, 55.00),
-	(36, 5, 15, 85.00),
 	(37, 4, 16, 90.00),
 	(38, 5, 16, 120.00),
-	(39, 4, 17, 100.00),
-	(40, 5, 17, 150.00),
 	(41, 4, 18, 90.00),
 	(42, 5, 18, 120.00);
 
@@ -122,18 +108,10 @@ CREATE TABLE IF NOT EXISTS `product_orders` (
   CONSTRAINT `FK_product_orders_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product_orders: ~10 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.product_orders: ~2 rows (приблизительно)
 REPLACE INTO `product_orders` (`order_id`, `product_id`, `quantity`, `cost`) VALUES
-	(1, 1, 3, 80.00),
-	(1, 4, 4, 75.00),
-	(1, 10, 5, 65.00),
-	(1, 13, 8, 85.00),
-	(1, 23, 1, 55.00),
-	(1, 27, 1, 40.00),
-	(1, 29, 1, 55.00),
-	(1, 35, 1, 55.00),
-	(1, 39, 1, 100.00),
-	(1, 41, 1, 90.00);
+	(1, 1, 1, 80.00),
+	(1, 10, 1, 65.00);
 
 -- Дамп структуры для таблица coffeshop.status
 DROP TABLE IF EXISTS `status`;
@@ -163,26 +141,20 @@ CREATE TABLE IF NOT EXISTS `title` (
   CONSTRAINT `FK_title_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.title: ~18 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.title: ~12 rows (приблизительно)
 REPLACE INTO `title` (`title_id`, `title_name`, `category_id`, `image`) VALUES
-	(1, 'Латте', 1, NULL),
-	(2, 'Капучино', 1, NULL),
-	(3, 'Эспрессо', 1, NULL),
-	(4, 'Американо', 1, NULL),
-	(5, 'Мокко', 1, NULL),
-	(6, 'Ристретто', 1, NULL),
-	(7, 'Чай с молоком', 2, NULL),
-	(8, 'Фруктовый час', 2, NULL),
-	(9, 'Черный чай', 2, NULL),
-	(10, 'Белый чай', 2, NULL),
-	(11, 'Зеленый чай', 2, NULL),
-	(12, 'Пуэр', 2, NULL),
-	(13, 'Тирамису', 3, NULL),
-	(14, 'Чизкейк', 3, NULL),
-	(15, 'Безе', 3, NULL),
-	(16, 'Панна котта', 3, NULL),
-	(17, 'Марципан', 3, NULL),
-	(18, 'Брауни', 3, NULL);
+	(1, 'Латте', 1, '/resource/images/slides/lat.jpg'),
+	(2, 'Капучино', 1, '/resource/images/slides/cap.jpg'),
+	(3, 'Эспрессо', 1, '/resource/images/slides/es.jpg'),
+	(4, 'Американо', 1, '/resource/images/slides/am.jpg'),
+	(7, 'Чай с молоком', 2, '/resource/images/slides/bm.jpg'),
+	(8, 'Фруктовый час', 2, '/resource/images/slides/ft.jpg'),
+	(9, 'Черный чай', 2, '/resource/images/slides/bt.jpg'),
+	(10, 'Зеленый чай', 2, '/resource/images/slides/gt.jpg'),
+	(13, 'Десерт Ягодный', 3, '/resource/images/slides/dya.jpg'),
+	(14, 'Кофейно-шоколадный', 3, '/resource/images/slides/ksh.jpg'),
+	(16, 'Панна котта', 3, '/resource/images/slides/pk.jpg'),
+	(18, 'Карамельно-банановый', 3, '/resource/images/slides/kb.jpg');
 
 -- Дамп структуры для таблица coffeshop.trait
 DROP TABLE IF EXISTS `trait`;
