@@ -40,6 +40,7 @@
                   <td class="w-[25%]">Количество</td>
                   <td class="w-[25%]">Цена ₽</td>
                 </tr>
+
                 <template>
                 <tr class="border-t-2 h-[70px]">
                   <td class="text-start">Латте</td>
@@ -66,6 +67,7 @@
                   <td>200 ₽</td>
                 </tr>
                 </template>
+
                 <tfoot>
                   <tr class="border-t-2 h-[70px]">
                     <td></td>

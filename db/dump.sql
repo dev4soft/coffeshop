@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `product_orders` (
   `cost` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`order_id`,`product_id`),
   KEY `FK_product_orders_product` (`product_id`),
+  CONSTRAINT `FK_product_orders_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_product_orders_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

@@ -25,7 +25,36 @@
   </head>
   <body>
     <?php require_once "header.html"; ?> 
-    <section id="service" class="h-auto pt-[100px]">
+
+    <section class="py-[50px] h-[90vh]">
+      <div class="container mx-auto ">
+        <div class=" flex flex-wrap columns-2xs justify-center  ">
+          <div class=" basis-1/2 relative shrink-0 ">
+          <div
+                class="text-[100px] text-[#C0C0C0] absolute left-10 top-[-72px] lg:text-[60px] z-0"
+              >
+                О нас 
+              </div>
+            <div  class="w-full   h-auto min-h-[400px] text-gray-700">
+              <p class="p-[50px] text-3xl">
+              Кофейня "Время для кофе" работает на рынке 2 года. В результате
+              работы достигнуты определенные успехи в изготовлении кофе элитных
+              сортов при соблюдении современных методов технологии обжарки
+              зеленого кофе. Мы используем только высококачественное сырье из
+              различных регионов мира. Все сорта имеют неповторимый, уникальный
+              для каждого сорта аромат и вкус.
+              </p>
+            </div>
+                
+          </div>
+          <div class="basis-1/3 ">
+            <img src="/resource/images/about.jpg"   alt="">
+          </div>
+        </div>
+          
+      </div>
+    </section>
+    <!-- <section id="service" class="h-screen pt-[100px]">
       <div class="container h-full">
         <div class="w-full relative">
           <div
@@ -34,7 +63,7 @@
             О нас
           </div>
           <div class="flex p-[50px] justify-center items-center">
-            <div class="basis-1/2 text-xl" style="border: 4px solid #323232">
+            <div class="basis-1/2 text-xl">
               Компания Время для кофе работает на рынке 2 года. В результате
               работы достигнуты определенные успехи в изготовлении кофе элитных
               сортов при соблюдении современных методов технологии обжарки
@@ -45,98 +74,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <section id="service" class="h-auto py-[100px]">
-      <div class="container h-full">
-        <div class="w-full relative">
-          <div
-            class="text-[100px] text-[#C0C0C0] absolute left-10 top-[-72px] lg:text-[60px] z-0"
-          >
-            Наш сервис
-          </div>
-
-          <div class="flex flex-wrap p-[50px] justify-center">
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-
-            <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-              <img
-                class="pb-4"
-                src="resource/images/icons/icon-coffee.png"
-                alt=""
-              />
-              <h3 class="text-2xl">fsdfsd</h3>
-              <div>
-                This is the perfect place to find a nice and cozy spot to sip
-                some.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </section> -->
+    
     <?php
         require_once "footer.html";
       ?>
