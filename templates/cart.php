@@ -22,7 +22,7 @@
   </head>
   <body>
   <?php require_once "header.html";?> 
-    <section class="py-[50px]  h-full ">
+    <section class="py-[50px]  h-full" id="app">
       <div class="container  mx-auto py-[100px] lg:py-[50px]">
         <div class="flex flex-wrap columns-2xs justify-center gap-10">
           <div class="basis-1/2">
@@ -40,32 +40,34 @@
                   <td class="w-[25%]">Количество</td>
                   <td class="w-[25%]">Цена ₽</td>
                 </tr>
-
-                <template>
-                <tr class="border-t-2 h-[70px]">
-                  <td class="text-start">Латте</td>
-                  <td>
-                    <select class="text-center w-[100px]">
-                      <option value="">200мл</option>
-                      <option value="">300мл</option>
-                      <option value="">400мл</option>
-                    </select>
-                  </td>
-                  <td>
-                    <button
-                      class="rounded-[50%] border w-[30px] mr-2 hover:bg-[#CD5C5C] hover:text-white lg:w-[25px]"
-                    >
-                      -
-                    </button>
-                    2
-                    <button
-                      class="rounded-[50%] border w-[30px] ml-2 hover:bg-[#3CB371] hover:text-white lg:w-[25px]"
-                    >
-                      +
-                    </button>
-                  </td>
-                  <td>200 ₽</td>
-                </tr>
+                
+                <template v-for="product in basket" v-key="product.product_id">
+                    <tr class="border-t-2 h-[70px]">
+                      <td class="text-start">{{ product.title_name }}</td>
+                      <td>
+                        <select class="text-center w-[100px]">
+                          <option value="">200мл</option>
+                          <option value="">300мл</option>
+                          <option value="">400мл</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button
+                          class="rounded-[50%] border w-[30px] mr-2 hover:bg-[#CD5C5C] hover:text-white lg:w-[25px]"
+                          v-on:click="dec(product.product_id)"
+                        >
+                          -
+                        </button>
+                        {{ product.quantity }} 
+                        <button
+                          class="rounded-[50%] border w-[30px] ml-2 hover:bg-[#3CB371] hover:text-white lg:w-[25px]"
+                          v-on:click="inc(product.product_id)"
+                        >
+                          +
+                        </button>
+                      </td>
+                      <td>{{ product.cost }} ₽</td>
+                    </tr>
                 </template>
 
                 <tfoot>
@@ -73,7 +75,7 @@
                     <td></td>
                     <td></td>
                     <td class="">Итого:</td>
-                    <td>2000 ₽</td>
+                    <td>{{ summa }} ₽</td>
                   </tr>
                 </tfoot>
               </table>
@@ -148,6 +150,7 @@
       </div>
     </section>
     <?php require_once "footer.html";?>
+
 <script src="/js/vue.min.js"></script>
 <script src="/js/vue-resource.min.js"></script>
 
@@ -156,6 +159,8 @@
     var app = new Vue({
         el: '#app',
         data: {
+            basket: [],
+            summa: 0,
         },
 
         computed: {
@@ -172,9 +177,56 @@
                         const sum = new Number(otvet.data.sum_cart);
                         if (sum) {
                             basket.innerHTML = otvet.data.sum_cart + ' р.';
+                            this.summa = otvet.data.sum_cart;
                         } else {
                             basket.innerHTML ='0 р.';
+                            this.summa = 0;
                         }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
+            inc: function (product_id) {
+                const data = new FormData;
+                data.set('product_id', product_id);
+                data.set('direct', '1');
+                this.change_quantity(data);
+            },
+
+
+            dec: function (product_id) {
+                const data = new FormData;
+                data.set('product_id', product_id);
+                data.set('direct', '-1');
+                this.change_quantity(data);
+            },
+
+
+            change_quantity: function (data) {
+                this.$http.post('/change_quantity', data).then(
+                    function (otvet) {
+                        if (otvet.data.error == 1) {
+                            window.location.href = otvet.data.url;
+                        } else {
+                            this.summa_cart();
+                            this.in_cart();
+                        }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
+            in_cart: function () {
+                this.$http.get('/in_cart').then(
+                    function (otvet) {
+                        this.basket = otvet.data;
                     },
                     function (errr) {
                         console.log(errr);
@@ -185,6 +237,7 @@
 
         created: function() {
             this.summa_cart();
+            this.in_cart();
         }
     })
 </script>

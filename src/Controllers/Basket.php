@@ -54,20 +54,40 @@ class Basket
             'sum_cart' => $sum_cart,
         ]);
     }
-/*
-select
-	product_id,
-	title_name,
-	trait_name,
-	quantity,
-	product_orders.cost
-from
-	product_orders
-	join product using (product_id)
-	join title using (title_id)
-	join trait using (trait_id)
-where
-	order_id = (select order_id from orders where user_id = 4 and status_id = 1)
-*/
+
+
+    public function productsInCart($request, $response)
+    {
+        $user_id = $this->session->user_id;
+        $in_cart = $this->product->inCart($user_id);
+
+        return $response->withJson($in_cart);
+    }
+
+
+    public function changeQuantity($request, $response)
+    {
+        $user_id = $this->session->user_id;
+
+        if (!$user_id) {
+
+            return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
+        }
+
+        $data = $request->getParsedBody();
+        $product_id = htmlspecialchars($data['product_id']);
+        $direct = filter_var($data['direct'], FILTER_VALIDATE_INT);
+
+        if ($direct === 1 || $direct === -1) {
+            $this->product->changeQuantity($user_id, $product_id, $direct);
+        }
+
+        $in_cart = $this->product->inCart($user_id);
+
+        return $response->withJson($in_cart);
+    }
 };
 

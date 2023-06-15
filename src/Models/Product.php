@@ -94,5 +94,54 @@ class Product
             ]
         );
     }
+
+
+    public function inCart($user_id)
+    {
+        return $this->db->getList('
+            select
+                product_id,
+                title_name,
+                trait_name,
+                quantity,
+                product_orders.cost as cost
+            from
+                product_orders
+                join product using (product_id)
+                join title using (title_id)
+                join trait using (trait_id)
+            where
+                order_id = (select order_id from orders where user_id = :user_id and status_id = 1)
+            having
+                quantity > 0
+            ',
+            [
+                'user_id' => $user_id,
+            ]
+        );
+    }
+
+
+    public function changeQuantity($user_id, $product_id, $direct)
+    {
+        $order_id = $this->orderId($user_id);
+
+        return $this->db->updateData('
+            update
+                product_orders
+            set
+                quantity = quantity + if(1 = :direct, 1, if(quantity = 0, 0, -1))
+            where
+                product_id = :product_id
+                and
+                order_id = :order_id
+            ',
+            [
+                'direct' => $direct,
+                'product_id' => $product_id,
+                'order_id' => $order_id,
+            ]
+        );
+    }
 }
 
