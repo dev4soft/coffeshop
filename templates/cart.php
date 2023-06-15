@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
       rel="stylesheet"
     />
+    <link type="image/png" sizes="16x16" rel="icon" href="/resource/images/favicon.png">
     <title>Document</title>
   </head>
   <body>
