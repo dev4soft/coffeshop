@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link type="image/png" sizes="16x16" rel="icon" href="/resource/images/favicon.png">
-    <title>Document</title>
+    <title>Каталог</title>
   </head>
   <body>
     <div id="app">

@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link type="image/png" sizes="16x16" rel="icon" href="/resource/images/favicon.png">
-    <title>Document</title>
+    <title>Корзина</title>
   </head>
   <body>
   <?php require_once "header.html";?> 
