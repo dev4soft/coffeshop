@@ -100,6 +100,7 @@ class Product
     {
         return $this->db->getList('
             select
+                product_order_id,
                 product_id,
                 title_name,
                 trait_name,
@@ -140,6 +141,48 @@ class Product
                 'direct' => $direct,
                 'product_id' => $product_id,
                 'order_id' => $order_id,
+            ]
+        );
+    }
+
+
+    public function changeTrait($user_id, $product_order_id, $new_product_id)
+    {
+        $order_id = $this->orderId($user_id);
+
+        return $this->db->updateData('
+            update
+                product_orders
+            set
+                product_id = :new_product_id,
+                cost = (select cost from product where product_id = :new_product_id)    
+            where
+                product_order_id = :product_order_id
+                and
+                order_id = :order_id
+            ',
+            [
+                'new_product_id' => $new_product_id,
+                'product_order_id' => $product_order_id,
+                'order_id' => $order_id,
+            ]
+        );
+    }
+
+
+    public function getTraites($product_id)
+    {
+        return $this->db->getList('
+            select
+                product_id, trait_name as name
+            from
+                product
+                join trait using (trait_id)
+            where
+                title_id = (select title_id from product where product_id = :product_id)
+            ',
+            [
+                'product_id' => $product_id,
             ]
         );
     }

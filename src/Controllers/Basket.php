@@ -89,5 +89,41 @@ class Basket
 
         return $response->withJson($in_cart);
     }
+
+
+    public function changeTrait($request, $response)
+    {
+        $user_id = $this->session->user_id;
+
+        if (!$user_id) {
+
+            return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
+        }
+
+        $data = $request->getParsedBody();
+        $product_order_id = filter_var($data['product_order_id'], FILTER_VALIDATE_INT);
+        $new_product_id = filter_var($data['new_product_id'], FILTER_VALIDATE_INT);
+
+        if ($product_order_id && $new_product_id) {
+            $this->product->changeTrait($user_id, $product_order_id, $new_product_id);
+        }
+
+        $in_cart = $this->product->inCart($user_id);
+
+        return $response->withJson($in_cart);
+    }
+
+
+    public function getTraites($request, $response)
+    {
+        $product_id = (int)$request->getAttribute('product_id');
+
+        $traites = $this->product->getTraites($product_id);
+
+        return $response->withJson($traites);
+    }
 };
 

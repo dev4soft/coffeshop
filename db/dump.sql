@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.orders: ~1 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.orders: ~0 rows (приблизительно)
 REPLACE INTO `orders` (`order_id`, `user_id`, `status_id`, `dt_tm`, `address`, `phone`, `comments`) VALUES
 	(1, 4, 1, NULL, NULL, NULL, NULL);
 
@@ -99,20 +99,24 @@ REPLACE INTO `product` (`product_id`, `trait_id`, `title_id`, `cost`) VALUES
 -- Дамп структуры для таблица coffeshop.product_orders
 DROP TABLE IF EXISTS `product_orders`;
 CREATE TABLE IF NOT EXISTS `product_orders` (
+  `product_order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(10) unsigned NOT NULL,
   `product_id` smallint(5) unsigned NOT NULL,
   `quantity` smallint(5) unsigned NOT NULL DEFAULT 1,
   `cost` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`order_id`,`product_id`),
+  PRIMARY KEY (`product_order_id`) USING BTREE,
+  UNIQUE KEY `order_id` (`order_id`,`product_id`),
   KEY `FK_product_orders_product` (`product_id`),
   CONSTRAINT `FK_product_orders_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_product_orders_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product_orders: ~2 rows (приблизительно)
-REPLACE INTO `product_orders` (`order_id`, `product_id`, `quantity`, `cost`) VALUES
-	(1, 1, 1, 80.00),
-	(1, 10, 1, 65.00);
+-- Дамп данных таблицы coffeshop.product_orders: ~3 rows (приблизительно)
+REPLACE INTO `product_orders` (`product_order_id`, `order_id`, `product_id`, `quantity`, `cost`) VALUES
+	(1, 1, 1, 1, 80.00),
+	(2, 1, 10, 3, 65.00),
+	(3, 1, 42, 1, 120.00),
+	(4, 1, 21, 1, 60.00);
 
 -- Дамп структуры для таблица coffeshop.status
 DROP TABLE IF EXISTS `status`;

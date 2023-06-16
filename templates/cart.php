@@ -46,11 +46,10 @@
                     <tr class="border-t-2 h-[70px]">
                       <td class="text-start">{{ product.title_name }}</td>
                       <td>
-                        <select class="text-center w-[100px]">
-                          <option value="">200мл</option>
-                          <option value="">300мл</option>
-                          <option value="">400мл</option>
-                        </select>
+                        <selecter
+                            v-on:select="change_trait(product.product_order_id, $event)"
+                            v-bind:product_id="product.product_id"
+                        ></selecter>
                       </td>
                       <td>
                         <button
@@ -156,21 +155,84 @@
 <script src="/js/vue-resource.min.js"></script>
 
 <script>
+Vue.component('selecter', {
+    props: ['product_id'],
+
+
+    data: function () {
+        return {
+            selected_trait: this.product_id,
+            traites: [],
+        }
+    },
+
+
+    methods: {
+        select: function () {
+            this.$emit('select', this.selected_trait);
+        },
+    },
+
+
+    computed: {
+        init: function () {
+            this.$http.get('/get_traites/' + this.product_id).then(
+                function (otvet) {
+                    this.traites = otvet.data;
+                },
+                function (errr) {
+                    console.log(errr);
+                }
+            );
+        },
+    },
+
+
+    template: `
+        <select
+            v-model="selected_trait"
+            v-on:click="select()"
+            class="text-center w-[100px]"
+            v-bind:name="init"
+        >
+            <option v-for="row in traites" v-bind:value="row.product_id">{{row.name}}</option>
+        </select>
+    `
+})
+</script>
+<script>
     Vue.use(VueResource);
     var app = new Vue({
         el: '#app',
         data: {
             basket: [],
             summa: 0,
+            traites: '',
         },
 
-        computed: {
-        },
-
-        watch: {
-        },
 
         methods: {
+            change_trait: function (product_order_id, new_product_id) {
+                const data = new FormData;
+                data.set('product_order_id', product_order_id);
+                data.set('new_product_id', new_product_id);
+
+                this.$http.post('/change_trait', data).then(
+                    function (otvet) {
+                        if (otvet.data.error == 1) {
+                            window.location.href = otvet.data.url;
+                        } else {
+                            this.summa_cart();
+                            this.in_cart();
+                        }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
             summa_cart: function () {
                 this.$http.get('/summa_cart').then(
                     function (otvet) {
