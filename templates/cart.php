@@ -106,7 +106,7 @@
                     type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
-                    v-bind:value="address"
+                    v-model="address"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -118,7 +118,7 @@
                     type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
-                    v-bind:value="phone"
+                    v-model="phone"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -130,7 +130,7 @@
                     type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
-                    v-bind:value="comments"
+                    v-model="comments"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
