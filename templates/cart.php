@@ -92,9 +92,9 @@
                 <div class="w-full h-[70px] relative">
                   <input
                     type="text"
-                    name="name"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
+                    v-bind:value="username"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -103,10 +103,10 @@
                 </div>
                 <div class="w-full h-[70px] relative">
                   <input
-                    type="email"
-                    name="name"
+                    type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
+                    v-bind:value="address"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -115,10 +115,10 @@
                 </div>
                 <div class="w-full h-[70px] relative">
                   <input
-                    type="email"
-                    name="name"
+                    type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
+                    v-bind:value="phone"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -127,10 +127,10 @@
                 </div>
                 <div class="w-full h-[70px] relative">
                   <input
-                    type="email"
-                    name="name"
+                    type="text"
                     class="peer block w-full appearance-none border-b-2 border-gray-500 bg-transparent py-2.5 px-0 text-xl text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                     placeholder=" "
+                    v-bind:value="comments"
                   />
                   <label
                     class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-[#4b5563] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
@@ -140,6 +140,8 @@
 
                 <button
                   class="w-full mt-5 rounded-md px-10 py-2 text-[40px] xl:text-[30px] sm:text-[25px] text-green-500"
+                  v-on:click="save_bid"
+                  type="button"
                 >
                   Оформить заказ
                 </button>
@@ -208,6 +210,10 @@ Vue.component('selecter', {
             basket: [],
             summa: 0,
             traites: '',
+            username: '<?=$username?>',
+            address: '',
+            phone: '',
+            comments: '',
         },
 
 
@@ -290,6 +296,25 @@ Vue.component('selecter', {
                 this.$http.get('/in_cart').then(
                     function (otvet) {
                         this.basket = otvet.data;
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
+            save_bid: function () {
+                const data = new FormData;
+                data.set('address', this.address);
+                data.set('phone', this.phone);
+                data.set('comments', this.comments);
+
+                this.$http.post('/save_bid', data).then(
+                    function (otvet) {
+                        if (otvet.data.error == 0) {
+                            window.location.href = otvet.data.url;
+                        }
                     },
                     function (errr) {
                         console.log(errr);

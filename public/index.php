@@ -112,6 +112,7 @@ $app->get('/in_cart', 'Basket:productsInCart');
 $app->post('/change_quantity', 'Basket:changeQuantity');
 $app->post('/change_trait', 'Basket:changeTrait');
 $app->get('/get_traites/{product_id}', 'Basket:getTraites');
+$app->post('/save_bid', 'Basket:saveBid');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');

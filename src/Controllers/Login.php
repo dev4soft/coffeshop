@@ -36,7 +36,6 @@ class Login
         // запрашиваем данные о пользователе
         $result = $this->user->info($email);
 
-        error_log('------------------');
         $this->session->username = $result['first_name'];
         $this->session->user_id = $result['user_id'];
         error_log($this->session->username);

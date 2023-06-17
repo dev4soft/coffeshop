@@ -186,5 +186,28 @@ class Product
             ]
         );
     }
+
+
+    public function saveBid($user_id, $address, $phone, $comments)
+    {
+        $order_id = $this->orderId($user_id);
+
+        return $this->db->updateData('
+            update
+                orders
+            set
+                address = :address, phone = :phone, comments = :comments, status_id = :status
+            where
+                order_id = :order_id
+            ',
+            [
+                'address' => $address,
+                'phone' => $phone,
+                'comments' => $comments,
+                'status' => 2,
+                'order_id' => $order_id,
+            ]
+        ); 
+    }
 }
 

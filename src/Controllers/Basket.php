@@ -19,7 +19,9 @@ class Basket
 
     public function cart($request, $response)
     {
-        return $this->view->render($response, 'cart.php');
+        $user_name = $this->session->username;
+
+        return $this->view->render($response, 'cart.php', ['username' => $user_name]);
     }
 
 
@@ -114,6 +116,40 @@ class Basket
         $in_cart = $this->product->inCart($user_id);
 
         return $response->withJson($in_cart);
+    }
+
+
+    public function saveBid($request, $response)
+    {
+        $user_id = $this->session->user_id;
+
+        if (!$user_id) {
+            return $response->withJson([
+                'error' => 0,
+                'url' => '/login',
+            ]);
+        }
+
+        $data = $request->getParsedBody();
+        $address = htmlspecialchars($data['address']);
+        $phone = htmlspecialchars($data['phone']);
+        $comments = htmlspecialchars($data['comments']);
+
+        $result = $this->product->saveBid($user_id, $address, $phone, $comments);
+
+        if ($result === 1) {
+            return $response->withJson([
+                'error' => 0,
+                'url' => '/profile',
+            ]);
+        }
+
+        $in_cart = $this->product->inCart($user_id);
+
+        return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
     }
 
 
