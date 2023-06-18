@@ -29,7 +29,7 @@
     <section class=" h-screen" id="app">
       <div class="container mx-auto py-[100px] lg:py-[50px]">
         <div class="flex flex-wrap columns-2xs justify-center gap-10">
-            <div class="w-full p-[25px] relative">
+            <div class="w-full p-[30px] relative" style="text-align: center">
               <div
                 class="text-[100px] text-[#C0C0C0] absolute left-10 top-[-72px] ] lg:text-[60px] z-0"
               >
@@ -37,6 +37,7 @@
               </div>
               <table
                 class="w-[800px] text-center mt-[20px] text-xl text-gray-600 xl:w-[600px] lg:w-[400px] lg:text-base"
+                style="margin: auto 0"
               >
                 <tr class="text-gray-500 text-base h-[50px]">
                   <td class="w-[20%] text-start">Дата и время заказа</td>
