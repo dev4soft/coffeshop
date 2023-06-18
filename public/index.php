@@ -95,6 +95,15 @@ $container['Profile'] = function($container) {
     );
 };
 
+$container['Adminka'] = function($container) {
+    return new \CoffeShop\Controllers\Adminka(
+        $container['view'],
+        $container['orders'],
+        $container['user'],
+        $container['session']
+    );
+};
+
 $container['Auth'] = function($container) {
     return new \CoffeShop\Controllers\Auth($container['session']);
 };
@@ -125,6 +134,16 @@ $app->group('', function () {
     $this->get('/profile', 'Profile:index');
     $this->get('/bid_saved', 'Profile:bidSaved');
 })->add('Auth:check');
+
+$app->group('', function () {
+    $this->get('/admin', 'Adminka:form');
+})->add('Auth:isAdmin');
+
+$app->group('', function () {
+    $this->get('/list_bids', 'Adminka:listBids');
+    $this->get('/bid_items/{order_id}', 'Adminka:bidItems');
+    $this->get('/get_statuses', 'Adminka:getStatuses');
+})->add('Auth:apiAdmin');
 
 $app->run();
 

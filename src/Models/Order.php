@@ -62,5 +62,45 @@ class Order
             ]
         );
     }
+
+
+    public function listBids()
+    {
+        $this->db->updateData('set lc_time_names="ru_RU"');
+
+        return $this->db->getList('
+            select 
+                order_id, date_format(dt_tm, "%d %M %Y, %H:%i") as dt, address, phone, comments, status_name
+            from
+                orders
+                join status using (status_id)
+            where
+                status_id <> 1
+            order by
+                status_id, dt_tm desc
+            '
+        );
+    }
+
+
+    public function bidItems($order_id)
+    {
+        return $this->db->getList('
+            select
+                title_name, trait_name, quantity, product_orders.cost as cost
+            from
+                product_orders
+                join orders using (order_id)
+                join product using (product_id)
+                join title using (title_id)
+                join trait using (trait_id)
+            where
+                order_id = :order_id
+            order by
+                title_name
+            ',
+            ['order_id' => $order_id]
+        );
+    }
 }
 

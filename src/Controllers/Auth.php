@@ -27,6 +27,29 @@ class Auth
 
         return $next($request, $response);
     }
+
+
+    public function isAdmin($request, $response, $next)
+    {
+        if ((int)$this->access() !== 9) {
+            return $response->withRedirect('/login');
+        }
+
+        return $next($request, $response);
+    }
+
+
+    public function apiAdmin($request, $response, $next)
+    {
+        if ((int)$this->access() !== 9) {
+            return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
+        }
+
+        return $next($request, $response);
+    }
 };
 
 
