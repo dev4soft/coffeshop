@@ -165,50 +165,23 @@
 
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
                             <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
+                            <h3 class="text-2xl">Как заказать</h3>
+                            <div>Заказать очень просто, достаточно добавить нужные позиции в корзину и оформить заказ.</div>
                         </div>
 
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
                             <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
+                            <h3 class="text-2xl">Как оплатить</h3>
+                            <div>После оформления заказа, его нужно будет оплатить. Сделать это можно разными способами.</div>
                         </div>
 
                         <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
                             <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
+                            <h3 class="text-2xl">Доставка</h3>
+                            <div>Итоговая сумма зависит от стоимости и веса заказа, расстояния между вами
+                                 и магазином и того, доставляет курьер пешком или на машине.</div>
                         </div>
 
-                        <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-                            <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
-                        </div>
-                        <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-                            <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
-                        </div>
-
-                        <div class="service-cart w-[380px] h-[250px] p-[30px] m-[15px]">
-                            <img class="pb-4" src="resource/images/icons/icon-coffee.png" alt="">
-                            <h3 class="text-2xl">fsdfsd</h3>
-                            <div>
-                                This is the perfect place to find a nice and cozy spot to sip some.
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
