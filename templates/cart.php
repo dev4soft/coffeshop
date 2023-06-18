@@ -245,8 +245,8 @@ Vue.component('selecter', {
                         const basket = document.getElementById('basket');
                         const sum = new Number(otvet.data.sum_cart);
                         if (sum) {
-                            basket.innerHTML = otvet.data.sum_cart + ' р.';
-                            this.summa = otvet.data.sum_cart;
+                            basket.innerHTML = sum + ' р.';
+                            this.summa = sum;
                         } else {
                             basket.innerHTML ='0 р.';
                             this.summa = 0;
