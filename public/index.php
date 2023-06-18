@@ -90,7 +90,7 @@ $container['Login'] = function($container) {
 $container['Profile'] = function($container) {
     return new \CoffeShop\Controllers\Profile(
         $container['view'],
-        $container['user'],
+        $container['orders'],
         $container['session']
     );
 };
@@ -118,6 +118,7 @@ $app->post('/change_trait', 'Basket:changeTrait');
 $app->get('/get_traites/{product_id}', 'Basket:getTraites');
 $app->post('/save_bid', 'Basket:saveBid');
 $app->get('/list_orders', 'Profile:listOrders');
+$app->get('/order_items/{order_id}', 'Profile:orderItems');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');

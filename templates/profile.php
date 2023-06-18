@@ -26,7 +26,7 @@
   </head>
   <body>
     <?php require_once "header.html"; ?> 
-    <section class=" h-screen">
+    <section class=" h-screen" id="app">
       <div class="container mx-auto py-[100px] lg:py-[50px]">
         <div class="flex flex-wrap columns-2xs justify-center gap-10">
             <div class="w-full p-[25px] relative">
@@ -39,44 +39,22 @@
                 class="w-[800px] text-center mt-[20px] text-xl text-gray-600 xl:w-[600px] lg:w-[400px] lg:text-base"
               >
                 <tr class="text-gray-500 text-base h-[50px]">
-                  <td class="w-[25%] text-start">Дата и время заказа</td>
+                  <td class="w-[20%] text-start">Дата и время заказа</td>
                   <td class="w-[15%]">Номер заказа</td>
-                  <td class="w-[25%]">Товары</td>
-                  <td class="w-[25%]">Итого ₽</td>
-                  <td class="w-[5%]"></td>
+                  <td class="w-[40%]">Товары</td>
+                  <td class="w-[20%]">Итого</td>
                 </tr>
-                <tr class="border-t-2 border-b-2 text-sm h-[70px]">
-                  <td class="text-start">28 мая, 15:05</td>
-                  <td> №205 </td>
+
+                <tr  v-for="order in orders" v-key="order.order_id"
+                     class="border-t-2 border-b-2 text-sm h-[70px]">
+                  <td class="text-start">{{order.dt}}</td>
+                  <td> №{{ order.order_id }} </td>
                   <td class="h-auto">
-                    <ul>
-                      <li>Латте 0,2л 2x 400 ₽,</li>
-                      <li>Капучино 0,4л 1x 300 ₽</li>  
-                    </ul>
+                    <items v-bind:order_id="order.order_id"></items>
                   </td>
-                  <td>270 ₽</td>
-                  <td><button
-                    class="text-red-500  ml-2 "
-                  >
-                    Удалить
-                  </button></td>
+                  <td>{{order.summa}} р.</td>
                 </tr>
-                <tr class="border-t-2 border-b-2 text-sm h-[70px]">
-                  <td class="text-start">28 мая, 15:05</td>
-                  <td> №206 </td>
-                  <td class="h-auto">
-                    <ul>
-                      <li>Латте 0,2л 2x 400 ₽,</li>
-                      <li>Капучино 0,4л 1x 300 ₽</li>  
-                    </ul>
-                  </td>
-                  <td>270 ₽</td>
-                  <td><button
-                    class="text-red-500  ml-2 "
-                  >
-                    Удалить
-                  </button></td>
-                </tr>                      
+
               </table>
             </div>
           </div>      
@@ -89,10 +67,47 @@
 <script src="/js/vue-resource.min.js"></script>
 
 <script>
+Vue.component('items', {
+    props: ['order_id'],
+
+
+    data: function () {
+        return {
+            goods: [],
+        }
+    },
+
+
+    computed: {
+        init: function () {
+            this.$http.get('/order_items/' + this.order_id).then(
+                function (otvet) {
+                    this.goods = otvet.data;
+                },
+                function (errr) {
+                    console.log(errr);
+                }
+            );
+        },
+    },
+
+
+    template: `
+        <ul v-bind:name="init">
+            <li v-for="row in goods">
+                {{ row.title_name }} {{ row.trait_name }} {{ row.quantity }} x {{ row.cost }} р.
+            </li>
+        </ul>
+    `
+})
+</script>
+
+<script>
     Vue.use(VueResource);
     var app = new Vue({
         el: '#app',
         data: {
+            orders: [],
         },
 
 
@@ -103,8 +118,7 @@
                         if (otvet.data.error == 1) {
                             window.location.href = otvet.data.url;
                         } else {
-                            this.summa_cart();
-                            this.in_cart();
+                            this.orders = otvet.data;
                         }
                     },
                     function (errr) {
