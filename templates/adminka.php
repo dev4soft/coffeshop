@@ -66,7 +66,12 @@
                     <items v-bind:order_id="order.order_id"></items>
                   </td>
 
-                  <td>{{order.status_name}}</td>
+                  <td>
+                    <selecter
+                        v-bind:status_id="order.status_id"
+                        v-on:select="change_status(order.order_id, $event)"
+                    ></selecter>
+                  </td>
 
                 </tr>
 
@@ -202,6 +207,29 @@ Vue.component('selecter', {
 
 
         methods: {
+            change_status: function (order_id, new_status_id) {
+                const data = new FormData;
+                data.set('order_id', order_id);
+                data.set('new_status_id', new_status_id);
+
+                this.$http.post('/change_status', data).then(
+                    function (otvet) {
+                        if (otvet.data.error == 1) {
+                            window.location.href = otvet.data.url;
+                        } else {
+                            if (otvet.data == 1) {
+                                this.orders = [];
+                                this.list_orders();
+                            }
+                        }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+
+
             list_orders: function () {
                 this.$http.get('/list_bids').then(
                     function (otvet) {

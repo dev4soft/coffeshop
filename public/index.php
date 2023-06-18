@@ -143,6 +143,7 @@ $app->group('', function () {
     $this->get('/list_bids', 'Adminka:listBids');
     $this->get('/bid_items/{order_id}', 'Adminka:bidItems');
     $this->get('/get_statuses', 'Adminka:getStatuses');
+    $this->post('/change_status', 'Adminka:changeStatus');
 })->add('Auth:apiAdmin');
 
 $app->run();

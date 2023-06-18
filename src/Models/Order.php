@@ -70,7 +70,7 @@ class Order
 
         return $this->db->getList('
             select 
-                order_id, date_format(dt_tm, "%d %M %Y, %H:%i") as dt, address, phone, comments, status_name
+                order_id, date_format(dt_tm, "%d %M %Y, %H:%i") as dt, address, phone, comments, status_id
             from
                 orders
                 join status using (status_id)
@@ -100,6 +100,38 @@ class Order
                 title_name
             ',
             ['order_id' => $order_id]
+        );
+    }
+
+
+    public function getStatuses()
+    {
+        return $this->db->getList('
+            select
+                status_id, status_name
+            from
+                status
+            order by
+                status_id
+            '
+        );
+    }
+
+
+    public function changeStatus($order_id, $new_status_id)
+    {
+        return $this->db->updateData('
+            update
+                orders
+            set
+                status_id = :new_status_id
+            where
+                order_id = :order_id
+            ',
+            [
+                'order_id' => $order_id,
+                'new_status_id' => $new_status_id,
+            ]
         );
     }
 }

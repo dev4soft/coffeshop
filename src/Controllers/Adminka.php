@@ -41,6 +41,26 @@ class Adminka
 
         return $response->withJson($order_items);
     }
+
+
+    public function getStatuses($request, $response)
+    {
+        $statuses = $this->orders->getStatuses();
+
+        return $response->withJson($statuses);
+    }
+
+
+    public function changeStatus($request, $response)
+    {
+        $data = $request->getParsedBody();
+        $order_id = htmlspecialchars($data['order_id']);
+        $new_status_id = htmlspecialchars($data['new_status_id']);
+
+        $statuses = $this->orders->changeStatus($order_id, $new_status_id);
+
+        return $response->withJson($statuses);
+    }
 };
 
 
