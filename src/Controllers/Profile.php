@@ -5,14 +5,14 @@ namespace CoffeShop\Controllers;
 class Profile
 {
     private $view;
-    private $user;
+    private $order;
     private $session;
 
 
-    public function __construct($view, $user, $session)
+    public function __construct($view, $order, $session)
     {
         $this->view = $view;
-        $this->user = $user;
+        $this->order = $order;
         $this->session = $session;
     }
 
@@ -20,6 +20,19 @@ class Profile
     public function index($request, $response)
     {
         return $this->view->render($response, 'profile.php');
+    }
+
+
+    public function listOrders($request, $response)
+    {
+        $user_id = $this->session->user_id;
+
+        if (!$user_id) {
+            return $response->withJson([
+                'error' => 1,
+                'url' => '/login',
+            ]);
+        }
     }
 };
 

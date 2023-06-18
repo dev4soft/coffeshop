@@ -83,8 +83,41 @@
           </div>     
       </div>
     </section>
-    <?php
-        require_once "footer.html";
-      ?>
+    <?php require_once "footer.html"; ?>
+
+<script src="/js/vue.min.js"></script>
+<script src="/js/vue-resource.min.js"></script>
+
+<script>
+    Vue.use(VueResource);
+    var app = new Vue({
+        el: '#app',
+        data: {
+        },
+
+
+        methods: {
+            list_orders: function () {
+                this.$http.get('/list_orders').then(
+                    function (otvet) {
+                        if (otvet.data.error == 1) {
+                            window.location.href = otvet.data.url;
+                        } else {
+                            this.summa_cart();
+                            this.in_cart();
+                        }
+                    },
+                    function (errr) {
+                        console.log(errr);
+                    }
+                );
+            },
+        },
+
+        created: function() {
+            this.list_orders();
+        }
+    })
+</script>
   </body>
 </html>

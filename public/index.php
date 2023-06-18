@@ -43,6 +43,10 @@ $container['product'] = function ($container) {
     return new \CoffeShop\Models\Product($container['db']);
 };
 
+$container['orders'] = function ($container) {
+    return new \CoffeShop\Models\Order($container['db']);
+};
+
 $container['session'] = function () {
     return new \SlimSession\Helper();
 };
@@ -113,6 +117,7 @@ $app->post('/change_quantity', 'Basket:changeQuantity');
 $app->post('/change_trait', 'Basket:changeTrait');
 $app->get('/get_traites/{product_id}', 'Basket:getTraites');
 $app->post('/save_bid', 'Basket:saveBid');
+$app->get('/list_orders', 'Profile:listOrders');
 
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');

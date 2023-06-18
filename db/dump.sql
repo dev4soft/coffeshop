@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` mediumint(8) unsigned NOT NULL,
   `status_id` tinyint(3) unsigned NOT NULL DEFAULT 1,
-  `dt_tm` datetime DEFAULT NULL,
+  `dt_tm` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `address` varchar(150) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `comments` varchar(300) DEFAULT NULL,
@@ -47,9 +47,10 @@ CREATE TABLE IF NOT EXISTS `orders` (
   CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.orders: ~0 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.orders: ~2 rows (приблизительно)
 REPLACE INTO `orders` (`order_id`, `user_id`, `status_id`, `dt_tm`, `address`, `phone`, `comments`) VALUES
-	(1, 4, 1, NULL, NULL, NULL, NULL);
+	(1, 4, 2, '2023-06-18 09:17:41', 'другой адрес', '556', 'не срочно'),
+	(2, 4, 2, '2023-06-17 21:49:47', 'до дома', '558811', 'быстрее');
 
 -- Дамп структуры для таблица coffeshop.product
 DROP TABLE IF EXISTS `product`;
@@ -111,12 +112,14 @@ CREATE TABLE IF NOT EXISTS `product_orders` (
   CONSTRAINT `FK_product_orders_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Дамп данных таблицы coffeshop.product_orders: ~3 rows (приблизительно)
+-- Дамп данных таблицы coffeshop.product_orders: ~6 rows (приблизительно)
 REPLACE INTO `product_orders` (`product_order_id`, `order_id`, `product_id`, `quantity`, `cost`) VALUES
 	(1, 1, 1, 1, 80.00),
-	(2, 1, 10, 3, 65.00),
+	(2, 1, 10, 2, 65.00),
 	(3, 1, 42, 1, 120.00),
-	(4, 1, 21, 1, 60.00);
+	(4, 1, 22, 1, 80.00),
+	(5, 2, 10, 1, 65.00),
+	(6, 2, 31, 1, 80.00);
 
 -- Дамп структуры для таблица coffeshop.status
 DROP TABLE IF EXISTS `status`;
@@ -153,7 +156,7 @@ REPLACE INTO `title` (`title_id`, `title_name`, `category_id`, `image`) VALUES
 	(3, 'Эспрессо', 1, '/resource/images/slides/es.jpg'),
 	(4, 'Американо', 1, '/resource/images/slides/am.jpg'),
 	(7, 'Чай с молоком', 2, '/resource/images/slides/bm.jpg'),
-	(8, 'Фруктовый час', 2, '/resource/images/slides/ft.jpg'),
+	(8, 'Фруктовый чай', 2, '/resource/images/slides/ft.jpg'),
 	(9, 'Черный чай', 2, '/resource/images/slides/bt.jpg'),
 	(10, 'Зеленый чай', 2, '/resource/images/slides/gt.jpg'),
 	(13, 'Десерт Ягодный', 3, '/resource/images/slides/dya.jpg'),
