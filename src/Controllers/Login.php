@@ -38,7 +38,10 @@ class Login
 
         $this->session->username = $result['first_name'];
         $this->session->user_id = $result['user_id'];
-        error_log($this->session->username);
+
+        if ($result['user_id'] == 9) {
+            return $response->withRedirect('/admin');
+        }
 
         return $response->withRedirect('/');
     }
