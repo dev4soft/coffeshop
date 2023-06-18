@@ -23,6 +23,12 @@ class Profile
     }
 
 
+    public function bidSaved($request, $response)
+    {
+        return $this->view->render($response, 'bid_saved.php');
+    }
+
+
     public function listOrders($request, $response)
     {
         $user_id = $this->session->user_id;

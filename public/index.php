@@ -123,6 +123,7 @@ $app->get('/order_items/{order_id}', 'Profile:orderItems');
 $app->group('', function () {
     $this->get('/cart', 'Basket:cart');
     $this->get('/profile', 'Profile:index');
+    $this->get('/bid_saved', 'Profile:bidSaved');
 })->add('Auth:check');
 
 $app->run();

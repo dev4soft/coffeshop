@@ -140,7 +140,7 @@ class Basket
         if ($result === 1) {
             return $response->withJson([
                 'error' => 0,
-                'url' => '/profile',
+                'url' => '/bid_saved',
             ]);
         }
 
